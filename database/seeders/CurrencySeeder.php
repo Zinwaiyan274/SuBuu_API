@@ -1,0 +1,127 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Currency;
+use Illuminate\Database\Seeder;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+class CurrencySeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $currencies = array(
+            array('name' => 'Afghani','iso_code' => 'AFN','symbol' => '؋','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => '2023-03-14 17:38:13'),
+            array('name' => 'Lek','iso_code' => 'ALL','symbol' => 'Lek','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:12'),
+            array('name' => 'Netherlands Antillian Guilder','iso_code' => 'ANG','symbol' => 'ƒ','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => '2023-01-03 18:02:09'),
+            array('name' => 'Argentine Peso','iso_code' => 'ARS','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => '2023-01-03 18:02:07'),
+            array('name' => 'Australian Dollar','iso_code' => 'AUD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:09'),
+            array('name' => 'Aruban Guilder','iso_code' => 'AWG','symbol' => 'ƒ','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:19'),
+            array('name' => 'Azerbaijanian Manat','iso_code' => 'AZN','symbol' => 'ман','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:20'),
+            array('name' => 'Convertible Marks','iso_code' => 'BAM','symbol' => 'KM','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:21'),
+            array('name' => 'Bangladeshi Taka','iso_code' => 'BDT','symbol' => '৳','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => NULL),
+            array('name' => 'Barbados Dollar','iso_code' => 'BBD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:13'),
+            array('name' => 'Bulgarian Lev','iso_code' => 'BGN','symbol' => 'лв','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:39'),
+            array('name' => 'Bermudian Dollar','iso_code' => 'BMD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:21'),
+            array('name' => 'Brunei Dollar','iso_code' => 'BND','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:22'),
+            array('name' => 'BOV Boliviano Mvdol','iso_code' => 'BOB','symbol' => '$b','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:44'),
+            array('name' => 'Brazilian Real','iso_code' => 'BRL','symbol' => 'R$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:45'),
+            array('name' => 'Bahamian Dollar','iso_code' => 'BSD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:28'),
+            array('name' => 'Pula','iso_code' => 'BWP','symbol' => 'P','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:48'),
+            array('name' => 'Belarussian Ruble','iso_code' => 'BYR','symbol' => '₽','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:50'),
+            array('name' => 'Belize Dollar','iso_code' => 'BZD','symbol' => 'BZ$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:21:56'),
+            array('name' => 'Canadian Dollar','iso_code' => 'CAD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:31'),
+            array('name' => 'Swiss Franc','iso_code' => 'CHF','symbol' => 'CHF','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:14'),
+            array('name' => 'CLF Chilean Peso Unidades de fomento','iso_code' => 'CLP','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:39'),
+            array('name' => 'Yuan Renminbi','iso_code' => 'CNY','symbol' => '¥','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:16'),
+            array('name' => 'COU Colombian Peso Unidad de Valor Real','iso_code' => 'COP','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:47'),
+            array('name' => 'Costa Rican Colon','iso_code' => 'CRC','symbol' => '₡','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:18'),
+            array('name' => 'CUC Cuban Peso Peso Convertible','iso_code' => 'CUP','symbol' => '₱','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:19'),
+            array('name' => 'Czech Koruna','iso_code' => 'CZK','symbol' => 'Kč','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:21'),
+            array('name' => 'Danish Krone','iso_code' => 'DKK','symbol' => 'kr','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:22'),
+            array('name' => 'Dominican Peso','iso_code' => 'DOP','symbol' => 'RD$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:23'),
+            array('name' => 'Egyptian Pound','iso_code' => 'EGP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:23'),
+            array('name' => 'Euro','iso_code' => 'EUR','symbol' => '€','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:27'),
+            array('name' => 'Fiji Dollar','iso_code' => 'FJD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:52'),
+            array('name' => 'Falkland Islands Pound','iso_code' => 'FKP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:28'),
+            array('name' => 'Pound Sterling','iso_code' => 'GBP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:29'),
+            array('name' => 'Gibraltar Pound','iso_code' => 'GIP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:30'),
+            array('name' => 'Quetzal','iso_code' => 'GTQ','symbol' => 'Q','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:31'),
+            array('name' => 'Guyana Dollar','iso_code' => 'GYD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:55'),
+            array('name' => 'Hong Kong Dollar','iso_code' => 'HKD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:27:56'),
+            array('name' => 'Lempira','iso_code' => 'HNL','symbol' => 'L','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:33'),
+            array('name' => 'Croatian Kuna','iso_code' => 'HRK','symbol' => 'kn','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:34'),
+            array('name' => 'Forint','iso_code' => 'HUF','symbol' => 'Ft','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:38'),
+            array('name' => 'Rupiah','iso_code' => 'IDR','symbol' => 'Rp','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:39'),
+            array('name' => 'New Israeli Sheqel','iso_code' => 'ILS','symbol' => '₪','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:40'),
+            array('name' => 'Iranian Rial','iso_code' => 'IRR','symbol' => '﷼','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:29:17'),
+            array('name' => 'Iceland Krona','iso_code' => 'ISK','symbol' => 'kr','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:49'),
+            array('name' => 'Jamaican Dollar','iso_code' => 'JMD','symbol' => 'J$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:50'),
+            array('name' => 'Yen','iso_code' => 'JPY','symbol' => '¥','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:51'),
+            array('name' => 'Som','iso_code' => 'KGS','symbol' => 'лв','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:52'),
+            array('name' => 'Riel','iso_code' => 'KHR','symbol' => '៛','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:53'),
+            array('name' => 'North Korean Won','iso_code' => 'KPW','symbol' => '₩','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:54'),
+            array('name' => 'Won','iso_code' => 'KRW','symbol' => '₩','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:57'),
+            array('name' => 'Cayman Islands Dollar','iso_code' => 'KYD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:18'),
+            array('name' => 'Tenge','iso_code' => 'KZT','symbol' => 'лв','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:23:59'),
+            array('name' => 'Kip','iso_code' => 'LAK','symbol' => '₭','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:00'),
+            array('name' => 'Lebanese Pound','iso_code' => 'LBP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:00'),
+            array('name' => 'Sri Lanka Rupee','iso_code' => 'LKR','symbol' => '₨','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:02'),
+            array('name' => 'Liberian Dollar','iso_code' => 'LRD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:21'),
+            array('name' => 'Lithuanian Litas','iso_code' => 'LTL','symbol' => 'Lt','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:03'),
+            array('name' => 'Latvian Lats','iso_code' => 'LVL','symbol' => 'Ls','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:04'),
+            array('name' => 'Denar','iso_code' => 'MKD','symbol' => 'ден','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:05'),
+            array('name' => 'Tugrik','iso_code' => 'MNT','symbol' => '₮','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:09'),
+            array('name' => 'Mauritius Rupee','iso_code' => 'MUR','symbol' => '₨','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:10'),
+            array('name' => 'MXV Mexican Peso Mexican Unidad de Inversion (UDI]','iso_code' => 'MXN','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:29'),
+            array('name' => 'Malaysian Ringgit','iso_code' => 'MYR','symbol' => 'RM','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:11'),
+            array('name' => 'Metical','iso_code' => 'MZN','symbol' => 'MT','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:11'),
+            array('name' => 'Naira','iso_code' => 'NGN','symbol' => '₦','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:13'),
+            array('name' => 'Cordoba Oro','iso_code' => 'NIO','symbol' => 'C$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:14'),
+            array('name' => 'Norwegian Krone','iso_code' => 'NOK','symbol' => 'kr','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:15'),
+            array('name' => 'Nepalese Rupee','iso_code' => 'NPR','symbol' => '₨','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:16'),
+            array('name' => 'New Zealand Dollar','iso_code' => 'NZD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:32'),
+            array('name' => 'Rial Omani','iso_code' => 'OMR','symbol' => '﷼','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:39'),
+            array('name' => 'USD Balboa US Dollar','iso_code' => 'PAB','symbol' => 'B/.','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:22'),
+            array('name' => 'Nuevo Sol','iso_code' => 'PEN','symbol' => 'S/.','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:23'),
+            array('name' => 'Philippine Peso','iso_code' => 'PHP','symbol' => 'Php','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:24'),
+            array('name' => 'Pakistan Rupee','iso_code' => 'PKR','symbol' => '₨','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:24'),
+            array('name' => 'Zloty','iso_code' => 'PLN','symbol' => 'zł','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:26'),
+            array('name' => 'Guarani','iso_code' => 'PYG','symbol' => 'Gs','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:26'),
+            array('name' => 'Qatari Rial','iso_code' => 'QAR','symbol' => '﷼','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:50'),
+            array('name' => 'New Leu','iso_code' => 'RON','symbol' => 'lei','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:34'),
+            array('name' => 'Serbian Dinar','iso_code' => 'RSD','symbol' => 'Дин.','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:35'),
+            array('name' => 'Russian Ruble','iso_code' => 'RUB','symbol' => 'руб','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:39'),
+            array('name' => 'Saudi Riyal','iso_code' => 'SAR','symbol' => '﷼','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => NULL),
+            array('name' => 'Solomon Islands Dollar','iso_code' => 'SBD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:57'),
+            array('name' => 'Seychelles Rupee','iso_code' => 'SCR','symbol' => '₨','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:42'),
+            array('name' => 'Swedish Krona','iso_code' => 'SEK','symbol' => 'kr','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:42'),
+            array('name' => 'Singapore Dollar','iso_code' => 'SGD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:28:59'),
+            array('name' => 'Saint Helena Pound','iso_code' => 'SHP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:45'),
+            array('name' => 'Somali Shilling','iso_code' => 'SOS','symbol' => 'S','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:48'),
+            array('name' => 'Surinam Dollar','iso_code' => 'SRD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:29:02'),
+            array('name' => 'USD El Salvador Colon US Dollar','iso_code' => 'SVC','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:29:36'),
+            array('name' => 'Syrian Pound','iso_code' => 'SYP','symbol' => '£','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:52'),
+            array('name' => 'Baht','iso_code' => 'THB','symbol' => '฿','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:55'),
+            array('name' => 'Turkish Lira','iso_code' => 'TRY','symbol' => 'TL','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:53'),
+            array('name' => 'Trinidad and Tobago Dollar','iso_code' => 'TTD','symbol' => 'TT$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:56'),
+            array('name' => 'New Taiwan Dollar','iso_code' => 'TWD','symbol' => 'NT$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:57'),
+            array('name' => 'Hryvnia','iso_code' => 'UAH','symbol' => '₴','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:24:59'),
+            array('name' => 'US Dollar','iso_code' => 'USD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 1,'created_at' => NULL,'updated_at' => NULL),
+            array('name' => 'UYI Uruguay Peso en Unidades Indexadas','iso_code' => 'UYU','symbol' => '$U','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:25:01'),
+            array('name' => 'Uzbekistan Sum','iso_code' => 'UZS','symbol' => 'лв','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:25:03'),
+            array('name' => 'Bolivar Fuerte','iso_code' => 'VEF','symbol' => 'Bs','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:25:03'),
+            array('name' => 'Dong','iso_code' => 'VND','symbol' => '₫','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:25:07'),
+            array('name' => 'East Caribbean Dollar','iso_code' => 'XCD','symbol' => '$','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:29:42'),
+            array('name' => 'Yemeni Rial','iso_code' => 'YER','symbol' => '﷼','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 15:29:43'),
+            array('name' => 'Rand','iso_code' => 'ZAR','symbol' => 'R','full_unit_name' => NULL,'sub_unit_name' => NULL,'default' => 0,'status' => 0,'created_at' => NULL,'updated_at' => '2022-11-26 12:25:10')
+          );
+
+        Currency::insert($currencies);
+    }
+}

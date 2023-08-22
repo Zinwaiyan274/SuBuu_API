@@ -1,0 +1,30 @@
+.indicate-text{
+    font-size: 12px;
+    color: red;
+}
+
+.form-control.error {
+    border-color: red;
+    padding: .375rem .75rem;
+}
+.image-wrapper.error {
+    border-color: red;
+    padding: .375rem .75rem;
+}
+.error-alert{
+    font-size: 11px;
+    color: red;
+}
+
+.error {
+    color: red !important;
+}
+
+.page-item.active .page-link {
+    color: #FF8400;
+    border: 1px solid #FF8400;
+}
+
+.min-height-200px {
+    min-height: 220px;
+}
