@@ -1,6 +1,6 @@
 <nav class="side-bar">
     <div class="side-bar-logo">
-        <a href="{{ route('dashboard') }}"><img height="35" src="{{ asset(settings()->footer_logo) }}" alt="Logo"></a>
+        <a href="{{ route('dashboard') }}"><img  src="{{ asset('assets/images/logo/Web Logo.png') }}" alt="Logo"></a>
         <button class="close-btn"><i class="fal fa-times"></i></button>
     </div>
     <div class="side-bar-manu">
