@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Admin\EnvController;
 use App\Http\Controllers\Admin\AjaxController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CustomAuthController;
@@ -41,6 +42,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
     Route::get('/edit-user/{id?}', [UserController::class, 'maanEditUser'])->name('edit-user');
     Route::post('/update-user/{id}', [UserController::class, 'maanUpdateUser'])->name('update-user');
     Route::delete('/delete-user/{id}', [UserController::class, 'maanDeleteUser'])->name('delete-user');
+
+    // Blogs CRUD
+    Route::get('/blog', [BlogController::class, 'maanBlog'])->name('blog');
+    Route::get('/blog/{id}', [BlogController::class, 'maanViewBlog'])->name('view-blog');
+    Route::post('/new-blog', [BlogController::class, 'maanNewBlog'])->name('new-blog');
+    Route::get('/edit-blog/{id}', [BlogController::class, 'maanEditBlog'])->name('edit-blog');
+    Route::post('/update-blog/{id}', [BlogController::class, 'maanUpdateBlog'])->name('update-blog');
+    Route::delete('/delete-blog/{id}', [BlogController::class, 'maanDeleteBlog'])->name('delete-blog');
 
     //Quiz category
     Route::get('/quiz-category', [QuizCategoryController::class, 'maanCategory'])->name('quiz-category');

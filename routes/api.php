@@ -61,6 +61,11 @@ Route::prefix('v1')->name('api.')->group(function () {
             //adnetworks api..
             Route::get('/adnetworks','maanAdnetwork');
         });
+
+        Route::controller(Api\BlogController::class)->group(function () {
+            Route::get('/blogs', 'blogList')->name('blog-list');
+            Route::get('/blogs/{id}/detail', 'blogDetail')->name('blog-detail');
+        });
     });
 });
 

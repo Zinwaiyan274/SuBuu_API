@@ -4,6 +4,8 @@
 <script src="{{ asset('back-end/js/jquery-confirm.min.js') }}"></script>
 <script src="{{ asset('assets/js/jquery.nice-select.js') }}"></script>
 <script src="{{asset('assets/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
+<!-- Summernote -->
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
 {{-- Custom --}}
 @stack('js')
 <script src="{{ asset('assets/plugins/validation-setup/validation-setup.js') }}"></script>

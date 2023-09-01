@@ -21,6 +21,14 @@
                     {{ __('Manage Users') }}
                 </a>
             </li>
+            <li class="{{ Request::routeIs('blog', 'view-blog', 'edit-blog') ? 'active' : ''}}">
+                <a @class(['active' => Route::is('blog')]) href="{{ route('blog') }}">
+                    <span class="sidebar-icon">
+                        <i class="fa fa-newspaper"></i>
+                    </span>
+                    {{ __('Blogs') }}
+                </a>
+            </li>
             <li class="{{ Request::routeIs('history') ? 'active' : ''}}">
                 <a @class(['active' => Route::is('history')]) href="{{ route('history') }}">
                     <span class="sidebar-icon">
