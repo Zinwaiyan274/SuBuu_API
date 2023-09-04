@@ -21,12 +21,11 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'password' => 'required',
-            'status' => 'nullable|integer',
-            'phone' => 'required|unique:users',
             'email' => 'required|email|unique:users',
+            'refer' => 'nullable|string'
         ]);
 
-        $createdata = $request->only('name', 'email', 'password', 'phone', 'refer');
+        $createdata = $request->only('name', 'email', 'password', 'refer');
         $createdata['image'] = $request->image ? $this->upload($request, 'image') : NULL;
         $createdata['password'] = bcrypt($request->password);
         $createdata['refer_code'] = 'RF' . random_int(0000, 9999);
@@ -61,7 +60,6 @@ class UserController extends Controller
                 $data['token']      = $userInfo->createToken('maanRocketApp')->plainTextToken;
                 $data['name']       = $userInfo->name;
                 $data['email']      = $userInfo->email;
-                $data['phone']      = $userInfo->phone;
                 $data['refer']      = $userInfo->refer;
                 return $this->respondWithSuccess('User login successfully!', $data);
             } else {
