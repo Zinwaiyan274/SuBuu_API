@@ -66,6 +66,14 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/blogs', 'blogList')->name('blog-list');
             Route::get('/blogs/{id}/detail', 'blogDetail')->name('blog-detail');
         });
+
+        /* Point System */
+        Route::controller(Api\PointController::class)->group(function() {
+            Route::get('/get-point', 'getPoint')->name('get-point');
+            Route::post('/give-point', 'givePoint')->name('give-point');
+
+            Route::post('/subtract-point', 'subtractPoint')->name('subtract-point');
+        });
     });
 });
 
