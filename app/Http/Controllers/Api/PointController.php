@@ -31,18 +31,13 @@ class PointController extends Controller
         $userId = Auth::user()->id;
 
         $userData = Point::where('user_id', $userId)->first();
-        $totalPoint = $userData->total_point;
+        $totalPoint = 0;
 
         if($userData){
-            $totalPoint += 10;
+            $totalPoint = $userData->total_point;
+        }
 
-            $data = [
-                'total_point' => $totalPoint,
-            ];
-
-            Point::where('user_id', $userId)->update($data);
-
-        } else {
+        if(!$userData){
             $data = [
                 'user_id' => $userId,
                 'total_point' => 10,
@@ -52,6 +47,16 @@ class PointController extends Controller
             ];
 
             Point::insert($data);
+
+
+        } else {
+            $totalPoint += 10;
+
+            $data = [
+                'total_point' => $totalPoint,
+            ];
+
+            Point::where('user_id', $userId)->update($data);
         }
 
         return response()->json($totalPoint, 200);
