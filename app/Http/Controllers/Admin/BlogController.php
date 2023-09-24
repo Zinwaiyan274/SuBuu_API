@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Admin;
 use DOMDocument;
 use App\Models\Blog;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use App\Models\BlogCategory;
 // use Illuminate\Support\Facades\File;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -14,12 +15,13 @@ class BlogController extends Controller
 {
     public function maanBlog()
     {
+        $categories = BlogCategory::where('status', 1)->get();
         $posts = Blog::when(request('search'), function ($q) {
                     $q->where('title', 'like', '%' . request('search') . '%');
                 })->latest()
                 ->paginate(10);
 
-        return view('back-end.pages.blog.blog', compact('posts'));
+        return view('back-end.pages.blog.blog', compact('categories', 'posts'));
     }
 
     public function maanViewBlog($id) {
@@ -38,6 +40,7 @@ class BlogController extends Controller
         Blog::create([
             'title' => $request->title,
             'content' => $content,
+            'category_id' => $request->category_id,
         ]);
 
         return response()->json([
@@ -63,10 +66,10 @@ class BlogController extends Controller
 
     // edit
     public function maanEditBlog($id) {
-        $post = Blog::where('id', $id)->get()->first();
-        return view(
-            'back-end.pages.blog.blog-edit',
-            ['id' => $post->id, 'title' => $post->title, 'content' => $post->content]
+        return view('back-end.pages.blog.blog-edit', [
+            'info' => Blog::find($id),
+            'categories' => BlogCategory::where('status', 1)->get(),
+            ]
         );
     }
 
@@ -76,11 +79,11 @@ class BlogController extends Controller
 
         $blog = Blog::find($id);
         if($blog) {
-            $this->DeleteImage($request->content);
             $content = $this->StoreImage($request);
             Blog::where('id', $id)->update([
                 'title' => $request->title,
                 'content' => $content,
+                'category_id' => $request->category_id,
             ]);
         }
 
@@ -95,7 +98,8 @@ class BlogController extends Controller
     private function BlogValidation($request) {
         $request->validate([
             'title' => 'required|string|max:225',
-            'content' => 'required'
+            'content' => 'required',
+            'category_id' => 'required|integer|max:20'
         ]);
     }
 
@@ -107,7 +111,7 @@ class BlogController extends Controller
         foreach($images as $key => $img) {
             if(strpos($img->getAttribute('src'), 'data:image/') === 0) {
                 $data = base64_decode(explode(',', explode(';', $img->getAttribute('src'))[1])[1]);
-                $dir = '/blog-image/';
+                $dir = '/back-end/img/blog_image/';
                 $imagePath = $dir . time() . $key . '.png';
                 if (!Storage::exists($dir)) {
                     Storage::makeDirectory($dir);

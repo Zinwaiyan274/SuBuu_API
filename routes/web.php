@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\Admin\PostBackController;
@@ -17,7 +18,9 @@ use App\Http\Controllers\Admin\SettingsController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AdnetworksController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\QuizCategoryController;
+use App\Http\Controllers\Admin\MovieCategoryController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
 use App\Http\Controllers\Admin\WithdrawRequestController;
 
@@ -43,13 +46,33 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
     Route::post('/update-user/{id}', [UserController::class, 'maanUpdateUser'])->name('update-user');
     Route::delete('/delete-user/{id}', [UserController::class, 'maanDeleteUser'])->name('delete-user');
 
+    // Blog Category
+    Route::controller(BlogCategoryController::class)->group(function() {
+        Route::get('/blog-category', 'maanCategory')->name('blog-category');
+        Route::post('/new-blog-category', 'maanNewCategory')->name('new-blog-category');
+        Route::get('/edit-blog-category/{id}', 'maanEditCategory')->name('edit-blog-category');
+        Route::post('/update-blog-category/{id}', 'maanUpdateCategory')->name('update-blog-category');
+        Route::delete('/delete-blog-category/{id}', 'maanDeleteCategory')->name('delete-blog-category');
+    });
+
     // Blogs CRUD
-    Route::get('/blog', [BlogController::class, 'maanBlog'])->name('blog');
-    Route::get('/blog/{id}', [BlogController::class, 'maanViewBlog'])->name('view-blog');
-    Route::post('/new-blog', [BlogController::class, 'maanNewBlog'])->name('new-blog');
-    Route::get('/edit-blog/{id}', [BlogController::class, 'maanEditBlog'])->name('edit-blog');
-    Route::post('/update-blog/{id}', [BlogController::class, 'maanUpdateBlog'])->name('update-blog');
-    Route::delete('/delete-blog/{id}', [BlogController::class, 'maanDeleteBlog'])->name('delete-blog');
+    Route::controller(BlogController::class)->group(function() {
+        Route::get('/blog', 'maanBlog')->name('blog');
+        Route::get('/blog/{id}', 'maanViewBlog')->name('view-blog');
+        Route::post('/new-blog', 'maanNewBlog')->name('new-blog');
+        Route::get('/edit-blog/{id}', 'maanEditBlog')->name('edit-blog');
+        Route::post('/update-blog/{id}', 'maanUpdateBlog')->name('update-blog');
+        Route::delete('/delete-blog/{id}', 'maanDeleteBlog')->name('delete-blog');
+    });
+
+    // Movie Category
+    Route::controller(MovieCategoryController::class)->group(function() {
+        Route::get('/movie-category', 'maanCategory')->name('movie-category');
+        Route::post('/new-movie-category', 'maanNewCategory')->name('new-movie-category');
+        Route::get('/edit-movie-category/{id}', 'maanEditCategory')->name('edit-movie-category');
+        Route::post('/update-movie-category/{id}', 'maanUpdateCategory')->name('update-movie-category');
+        Route::delete('/delete-movie-category/{id}', 'maanDeleteCategory')->name('delete-movie-category');
+    });
 
     //Quiz category
     Route::get('/quiz-category', [QuizCategoryController::class, 'maanCategory'])->name('quiz-category');
