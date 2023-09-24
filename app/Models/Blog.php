@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BlogCategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Blog extends Model
 {
@@ -12,5 +13,10 @@ class Blog extends Model
     protected $fillable = [
         'title',
         'content',
+        'category_id',
     ];
+
+    public function blogCategory() {
+        return $this->belongsTo(BlogCategory::class,'category_id');
+    }
 }
