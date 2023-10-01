@@ -65,6 +65,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
         Route::delete('/delete-blog/{id}', 'maanDeleteBlog')->name('delete-blog');
     });
 
+
+    // Movie Category
+    Route::controller(MovieController::class)->group(function() {
+        Route::get('/movies', 'index')->name('movies');
+        Route::post('/new-movie', 'create')->name('new-movie');
+        Route::get('/edit-movie/{id}', 'edit')->name('edit-movie');
+        Route::post('/update-movie/{id}', 'update')->name('update-movie');
+        Route::delete('/delete-movie/{id}', 'delete')->name('delete-movie');
+    });
+
     // Movie Category
     Route::controller(MovieCategoryController::class)->group(function() {
         Route::get('/movie-category', 'maanCategory')->name('movie-category');

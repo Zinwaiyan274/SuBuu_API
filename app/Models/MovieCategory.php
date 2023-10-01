@@ -15,4 +15,9 @@ class MovieCategory extends Model
         'image',
         'status'
     ];
+
+    public function movies()
+    {
+        return $this->hasMany(Movie::class , 'category_id');
+    }
 }

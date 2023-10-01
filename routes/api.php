@@ -71,8 +71,12 @@ Route::prefix('v1')->name('api.')->group(function () {
         Route::controller(Api\PointController::class)->group(function() {
             Route::get('/get-point', 'getPoint')->name('get-point');
             Route::post('/give-point', 'givePoint')->name('give-point');
-
             Route::post('/subtract-point', 'subtractPoint')->name('subtract-point');
+        });
+
+        Route::controller(Api\MovieController::class)->group(function() {
+            Route::get('/movies' , 'movieList')->name('movie-list');
+            Route::get('/movie/{id}' , 'movieDetail')->name('movie-detail');
         });
     });
 });
