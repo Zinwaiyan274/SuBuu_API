@@ -66,6 +66,8 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/blogs', 'blogList')->name('blog-list');
             Route::get('/blogs/{id}/detail', 'blogDetail')->name('blog-detail');
         });
+
+        Route::get('/blog-categories', [Api\BlogCategoryController::class, 'categoryList'])->name('blog-categories');
     });
 });
 
