@@ -12,7 +12,7 @@ class MovieController extends Controller
 {
     public function index()
     {
-        $movies =  Movie::latest()->paginate(10);
+        $movies =  Movie::with('categories')->paginate(10);
 
         $categories = MovieCategory::all();
 
@@ -40,19 +40,20 @@ class MovieController extends Controller
             'title' => 'required|max:200|min:2',
             'url' => 'required',
             'description' => 'required|string',
-            'category_id' => 'required|string',
+            'category_id' => 'required',
             'thumbnail' => 'required|mimes:png,jpg,svg,jpeg,gif|max:2028',
         ]);
 
         $imageUrl = CustomHelper::imageUpload($request->file('thumbnail'),'back-end/img/thumbnails/');
 
-            Movie::create([
+            $movie = Movie::create([
                 'title' => $request->title,            
                 'description'=> $request->description,
                 'url' => $request->url,
-                'category_id' => $request->category_id,
                 'thumbnail' => $imageUrl,
             ]);
+
+            $movie->categories()->attach($request->category_id); 
 
             return response()->json([
                 'message' => 'Movies Created Successfully!',
@@ -63,10 +64,14 @@ class MovieController extends Controller
     public function edit($id)
     {
         $movie_info = Movie::find($id);
+
+        $movie_categories = $movie_info->categories->pluck('id')->all();
+
         $categories = MovieCategory::all();
 
         return view('back-end.pages.movie.edit-movie', [
-            'info' => $movie_info,
+            'movie_info' => $movie_info,
+            'movie_categories'=> $movie_categories,
             'categories'=> $categories,
         ]);
     }
@@ -83,13 +88,14 @@ class MovieController extends Controller
         
         $oldRecord = Movie::find($id);
 
-        Movie::find($id)->update([
+        $movie = Movie::find($id)->update([
             'title' => $request->title,
             'description' => $request->description,
-            'category_id' => $request->category_id,
             'url' => $request->url,
             'thumbnail'=> CustomHelper::imageUpload($request->thumbnail  , 'backend/img/thumbnails/' , $oldRecord->thumbnail),
         ]);
+
+        $oldRecord->categories()->sync($request->category_id); 
 
         return redirect('/movies')->with('message', 'Movie updated successfully.');
     }

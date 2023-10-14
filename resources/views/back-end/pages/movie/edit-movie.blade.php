@@ -13,31 +13,31 @@
                         <div class="table-header">
                             <h4>Update Movie</h4>
                         </div>
-                        <form action="{{ route('update-movie', ['id' => $info->id]) }}" method="post"  enctype="multipart/form-data">
+                        <form action="{{ route('update-movie', ['id' => $movie_info->id]) }}" method="post"  enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-4 mt-3">
                                     <label>Title</label>
                                 </div>
                                 <div class="col-lg-8 mt-3">
-                                    <input type="text" name="title" class="form-control" value="{{ $info->title }}"
+                                    <input type="text" name="title" class="form-control" value="{{ $movie_info->title }}"
                                         required>
                                 </div>
                                 <div class="col-lg-4 mt-3">
                                     <label>URL</label>
                                 </div>
                                 <div class="col-lg-8 mt-3">
-                                    <input type="text" name="url" class="form-control" value="{{ $info->url }}"
+                                    <input type="text" name="url" class="form-control" value="{{ $movie_info->url }}"
                                         required>
                                 </div>
                                 <div class="col-lg-4 mt-3">
                                     <label>Category</label>
                                 </div>
                                 <div class="col-lg-8 mt-3">
-                                        <select name="category_id" class="form-control" required>
-                                            <option value="" disabled selected>{{__('Select a Movie Category')}}</option>
+                                        <select name="category_id[]" class="form-control" multiple required>
+                                            <option value="" disabled selected>{{__('Select Movie Category')}}</option>
                                             @foreach($categories as $category)
-                                                <option @selected($category->id == $info->category_id) value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option @selected(in_array($category->id , $movie_categories)) value="{{ $category->id }}">{{ $category->name }}</option>
                                             @endforeach
                                         </select>
                                 </div>
@@ -45,7 +45,7 @@
                                     <label>Thumbnail</label>
                                 </div>
                                 <div class="col-lg-8 mt-3">
-                                    <input type="file" name="thumbnail" class="form-control" value="{{ $info->thumbnail }}">
+                                    <input type="file" name="thumbnail" class="form-control" value="{{ $movie_info->thumbnail }}">
                                 </div>
                                 <div class="col-lg-4 mt-3">
                                     <label>Description</label>
@@ -53,7 +53,7 @@
                                 <div class="col-lg-8 mt-3">
                                     <textarea name="description" class="form-control"
                                         required>
-                                        {{ $info->description}}
+                                        {{ $movie_info->description}}
                                     </textarea>
                                 </div>
                                 <div class="col-lg-12 mt-5">

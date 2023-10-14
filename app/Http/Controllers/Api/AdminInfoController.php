@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminInfoController extends Controller
 {
-
-
     public function categoryInfo(): JsonResponse
     {
         $category = QuizCategory::class;

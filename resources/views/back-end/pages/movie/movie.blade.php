@@ -52,7 +52,13 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $movie->title }}</td>
                                         <td>{{ $movie->description }}</td>
-                                        <td>{{ $movie->movieCategory->name }}</td>
+                                        <td>
+                                            @foreach ($movie->categories as $category)
+                                            <span class="badge bg-success">
+                                               {{ $category->name }} 
+                                            </span>
+                                            @endforeach
+                                        </td>
                                         <td>{{ $movie->url }}</td>
                                         <td>
                                             <img class="rounded-circle" height="35" width="35"
@@ -118,7 +124,7 @@
                                         </div>
                                         <div class="col-lg-6 mt-2">
                                             <label>Category</label>
-                                            <select name="category_id" class="form-control" required>
+                                            <select name="category_id[]" class="form-control" multiple required>
                                                 @foreach ($categories as $category)
                                                 <option value="{{$category->id}}">{{ $category->name }}</option>
                                                 @endforeach

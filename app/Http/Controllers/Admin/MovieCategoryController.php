@@ -61,7 +61,6 @@ class MovieCategoryController extends Controller
 
         $category = MovieCategory::find($id);
         // try catch
-        // image url won't update
         if($category) {
             $category->image = CustomHelper::imageUpload($request->file('image'),'back-end/img/movie_category_image/', $category->image);
             $category->name = $request->name;

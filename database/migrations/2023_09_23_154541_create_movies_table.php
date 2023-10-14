@@ -13,11 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('movies', function (Blueprint $table) {
-            $table->id();
+        Schema::create('movies', function (Blueprint $table) { $table->id();
             $table->string('title');
             $table->string('description');
-            $table->unsignedBigInteger('category_id');
             $table->string('url');
             $table->string('thumbnail');
             $table->timestamps();

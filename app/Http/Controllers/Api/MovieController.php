@@ -9,7 +9,7 @@ class MovieController extends Controller
 {
     public function movieList()
     {
-        $movies =  Movie::with('movieCategory')->latest()->paginate(10);
+        $movies =  Movie::with('categories')->paginate(10);
 
         return response()->json([
             'movies' => $movies
@@ -18,7 +18,7 @@ class MovieController extends Controller
 
     public function movieDetail($id)
     {
-        $movie = Movie::with('movieCategory')->find($id);
+        $movie = Movie::with('categories')->find($id);
 
         return response()->json([
             'movie' => $movie

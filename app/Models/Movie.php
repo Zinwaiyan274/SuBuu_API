@@ -4,19 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\MovieCategory;
 
 class Movie extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'url' , 'thumbnail' , 'category_id'
+        'title', 'description', 'url' , 'thumbnail' ,
     ];
 
-    public function movieCategory()
+    public function categories()
     {
-        return $this->belongsTo(MovieCategory::class , 'category_id');
+        return $this->belongsToMany(MovieCategory::class);
     }
 
 }
