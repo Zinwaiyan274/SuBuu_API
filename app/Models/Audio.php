@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Audio extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['id', 'image', 'audio', 'audio_title', 'artist_id', 'status'];
 }

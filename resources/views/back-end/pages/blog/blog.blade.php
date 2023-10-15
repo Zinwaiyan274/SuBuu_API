@@ -65,7 +65,7 @@
                     <div class="row justify-content-center">
                         <div class="col-sm-9">
                             <div class="order-form-section">
-                                <form action="{{route('new-blog')}}" method="post" class="add-brand-form ajaxform_instant_reload" id="add-brand-form" enctype="multipart/form-data">
+                                c
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-12 mt-2">

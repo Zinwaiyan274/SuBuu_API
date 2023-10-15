@@ -29,6 +29,18 @@
                     {{ __('Blogs') }}
                 </a>
             </li>
+            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist') ? 'active' : ''}}">
+                <a href="#">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-music"></i>
+                    </span>
+                    {{__('Music')}} </a>
+                <ul>
+                    <li><a @class(['active' => Route::is('audio')]) href="{{ route('audio') }}">{{__('Audio')}}</a></li>
+                    <li><a @class(['active' => Route::is('artist')]) href="{{ route('artist') }}">{{__('Artist')}}</a></li>
+                    <li><a @class(['active' => Route::is('album')]) href="{{ route('album') }}">{{__('Album')}}</a></li>
+                </ul>
+            </li>
             <li class="{{ Request::routeIs('history') ? 'active' : ''}}">
                 <a @class(['active' => Route::is('history')]) href="{{ route('history') }}">
                     <span class="sidebar-icon">
