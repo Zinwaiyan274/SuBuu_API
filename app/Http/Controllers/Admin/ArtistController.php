@@ -56,16 +56,21 @@ class ArtistController extends Controller
         $artist = Artist::find($id);
 
         if($request){
-            if(File::exists(public_path().'/artist_image/'.$artist->image)){
-                File::delete(public_path().'/artist_image/'.$artist->image);
+            if($request->image) {
+                if(File::exists(public_path().'/artist_image/'.$artist->image)){
+                    File::delete(public_path().'/artist_image/'.$artist->image);
+                }
+
+                $file = $request->file('image');
+                $fileName = uniqid().'_'.$file->getClientOriginalName();
+                Storage::disk('public')->put('artist_image/'.$fileName, File::get($file));
+
+                $artist->update([
+                    'image' => $fileName
+                ]);
             }
 
-            $file = $request->file('image');
-            $fileName = uniqid().'_'.$file->getClientOriginalName();
-            Storage::disk('public')->put('artist_image/'.$fileName, File::get($file));
-
-            Artist::where('id', $id)->update([
-                'image' => $fileName,
+            $artist->update([
                 'artist_name' => $request->name,
                 'status' => $request->status
             ]);

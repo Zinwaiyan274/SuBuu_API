@@ -29,7 +29,7 @@
                     {{ __('Blogs') }}
                 </a>
             </li>
-            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist') ? 'active' : ''}}">
+            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist', 'album', 'edit-album') ? 'active' : ''}}">
                 <a href="#">
                     <span class="sidebar-icon">
                         <i class="fas fa-music"></i>
