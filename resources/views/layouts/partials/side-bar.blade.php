@@ -21,14 +21,6 @@
                     {{ __('Manage Users') }}
                 </a>
             </li>
-            <li class="{{ Request::routeIs('blog', 'view-blog', 'edit-blog') ? 'active' : ''}}">
-                <a @class(['active' => Route::is('blog')]) href="{{ route('blog') }}">
-                    <span class="sidebar-icon">
-                        <i class="fa fa-newspaper"></i>
-                    </span>
-                    {{ __('Blogs') }}
-                </a>
-            </li>
             <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist') ? 'active' : ''}}">
                 <a href="#">
                     <span class="sidebar-icon">
