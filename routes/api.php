@@ -80,6 +80,11 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/movies' , 'movieList')->name('movie-list');
             Route::get('/movie/{id}' , 'movieDetail')->name('movie-detail');
         });
+
+        Route::controller(Api\MusicController::class)->group(function() {
+            Route::get('/music', 'musicList')->name('music-list');
+            Route::get('/single-music/{id}', 'singleMuisc')->name('single-music');
+        });
     });
 });
 
