@@ -67,6 +67,7 @@
                     </span>
                     {{__('Movie')}} </a>
                 <ul>
+                    <li><a @class(['active' => Route::is('movies') || Route::is('edit-movie')]) href="{{ url('movies') }}">{{__('Movie')}}</a></li>
                     <li><a @class(['active' => Route::is('movie-category') || Route::is('edit-movie-category')]) href="{{ url('movie-category') }}">{{__('Category')}}</a></li>
                 </ul>
             </li>
