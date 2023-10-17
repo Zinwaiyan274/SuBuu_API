@@ -21,7 +21,6 @@ class User extends Authenticatable
 
     protected static $users;
 
-
     public static function addUsers($request)
     {
         self::$users = new User();

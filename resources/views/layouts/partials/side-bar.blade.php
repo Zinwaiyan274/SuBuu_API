@@ -21,15 +21,7 @@
                     {{ __('Manage Users') }}
                 </a>
             </li>
-            <li class="{{ Request::routeIs('blog', 'view-blog', 'edit-blog') ? 'active' : ''}}">
-                <a @class(['active' => Route::is('blog')]) href="{{ route('blog') }}">
-                    <span class="sidebar-icon">
-                        <i class="fa fa-newspaper"></i>
-                    </span>
-                    {{ __('Blogs') }}
-                </a>
-            </li>
-            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist', 'album', 'edit-album') ? 'active' : ''}}">
+            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist') ? 'active' : ''}}">
                 <a href="#">
                     <span class="sidebar-icon">
                         <i class="fas fa-music"></i>
@@ -48,6 +40,28 @@
                     </span>
                     {{__('Reports')}}
                 </a>
+            </li>
+            <li class="dropdown {{ Request::routeIs('blog', 'view-blog', 'edit-blog', 'blog-category', 'edit-blog-category') ? 'active' : ''}}">
+                <a href="#">
+                    <span class="sidebar-icon">
+                        <i class="fa fa-newspaper"></i>
+                    </span>
+                    {{__('Blog')}} </a>
+                <ul>
+                    <li><a @class(['active' => Route::is('blog-category') || Route::is('edit-blog-category')]) href="{{ url('blog-category') }}">{{__('Category')}}</a></li>
+                    <li><a @class(['active' => Route::is('blog') || Route::is('edit-blog') || Route::is('view-blog')]) href="{{ url('blog') }}">{{__('Blog')}}</a></li>
+                </ul>
+            </li>
+            <li class="dropdown {{ Request::routeIs('movie-category', 'edit-movie-category') ? 'active' : ''}}">
+                <a href="#">
+                    <span class="sidebar-icon">
+                        <i class="fa fa-film"></i>
+                    </span>
+                    {{__('Movie')}} </a>
+                <ul>
+                    <li><a @class(['active' => Route::is('movies') || Route::is('edit-movie')]) href="{{ url('movies') }}">{{__('Movie')}}</a></li>
+                    <li><a @class(['active' => Route::is('movie-category') || Route::is('edit-movie-category')]) href="{{ url('movie-category') }}">{{__('Category')}}</a></li>
+                </ul>
             </li>
             <li class="dropdown {{ Request::routeIs('quiz-category','edit-quiz-category','quiz','edit-quiz', 'quiz.create', 'question','edit-question', 'question.create') ? 'active' : ''}}">
                 <a href="#">

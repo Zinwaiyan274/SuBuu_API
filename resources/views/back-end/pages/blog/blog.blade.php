@@ -35,6 +35,7 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('SL') }}</th>
+                                    <th>{{ __('Category Name') }}</th>
                                     <th>{{ __('Title') }}</th>
                                     <th>{{ __('Created Date') }}</th>
                                     <th>{{ __('Actions') }}</th>
@@ -44,6 +45,7 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
+                                        <td>{{ $post->blogCategory->name }}</td>
                                         <td>{{ $post->title }}</td>
                                         <td>{{ $post->created_at }}</td>
                                         <td>
@@ -68,6 +70,16 @@
                                 c
                                     @csrf
                                     <div class="row">
+                                        <div class="col-lg-6 mt-2">
+                                            <label>{{ __('Category Name') }}</label>
+                                            <select name="category_id" class="form-control" required>
+                                                <option value="" disabled selected>{{__('Select Blog Category')}}</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+
                                         <div class="col-lg-12 mt-2">
                                             <label>{{__('Title')}}</label>
                                             <input type="text" name="title" class="form-control" placeholder="Name" required>

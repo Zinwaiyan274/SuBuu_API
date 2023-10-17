@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-
-use App\Models\Currency;
-use App\Models\CurrencyConvert;
-use App\Models\Question;
 use App\Models\Quiz;
-use App\Models\QuizCategory;
-use App\Models\Reward;
-use App\Models\Settings;
+
 use App\Models\User;
+use App\Models\Reward;
 use App\Models\Wallet;
-use App\Models\WithdrawMethod;
-use App\Models\WithdrawRequest;
+use App\Models\Currency;
+use App\Models\Question;
+use App\Models\Settings;
+use App\Models\BlogCategory;
+use App\Models\QuizCategory;
 use Illuminate\Http\Request;
+use App\Models\MovieCategory;
+use App\Models\WithdrawMethod;
+use App\Models\CurrencyConvert;
+use App\Models\WithdrawRequest;
+use App\Http\Controllers\Controller;
 
 class AjaxController extends Controller
 {
@@ -28,8 +30,14 @@ class AjaxController extends Controller
                 case 'User '.end($statusLastText) :
                    $test= User::class;
                     break;
+                case 'Blog Category '.end($statusLastText):
+                    $test= BlogCategory::class;
+                     break;
                 case 'Quiz Category '.end($statusLastText):
                    $test= QuizCategory::class;
+                    break;
+                case 'Movie Category '.end($statusLastText):
+                    $test= MovieCategory::class;
                     break;
                 case 'Quiz '.end($statusLastText):
                    $test= Quiz::class;
