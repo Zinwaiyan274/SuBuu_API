@@ -62,14 +62,14 @@
                     <li><a @class(['active' => Route::is('question') || Route::is('question.create') || Route::is('edit-question')]) href="{{ url('question') }}">{{__('Questions')}}</a></li>
                 </ul>
             </li>
-            <li class="dropdown {{ Request::routeIs('withdraw-method', 'edit-withdraw-method', 'withdraw-request', 'withdraw.show') ? 'active' : ''}}">
+            <li class="dropdown {{ Request::routeIs('withdraw-request', 'withdraw.show') ? 'active' : ''}}">
                 <a href="#">
                     <span class="sidebar-icon">
                         <i class="fas fa-credit-card"></i>
                     </span>
                     {{__('Withdraw')}} </a>
                 <ul>
-                    <li><a @class(['active' => Route::is('withdraw-method') || Route::is('edit-withdraw-method')]) href="{{url('withdraw-method')}}">{{__('Withdraw Method')}}</a></li>
+                    {{-- <li><a @class(['active' => Route::is('withdraw-method') || Route::is('edit-withdraw-method')]) href="{{url('withdraw-method')}}">{{__('Withdraw Method')}}</a></li> --}}
                     <li><a @class(['active' => Route::is('withdraw-request')]) href="{{ url('withdraw-request') }}">{{__('Withdraw Request')}}</a></li>
                 </ul>
             </li>

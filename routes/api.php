@@ -45,7 +45,6 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::post('/remove-point','removePointSpin');
             Route::post('/add-point-quiz','addPointQuiz');
             //withdraw api..
-            Route::get('/withdraw-method','whitdrawMethod');
             Route::post('/withdraw-request','withdrawRequest');
             Route::get('/withdraw-history','withdrawHistory');
             // currency api ...

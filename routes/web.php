@@ -96,12 +96,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
     Route::post('/update-question/{id}', [QuestionController::class, 'maanUpdateQuestion'])->name('update-question');
     Route::delete('/delete-question/{id}', [QuestionController::class, 'maanDeleteQuestion'])->name('delete-question');
 
-    //Withdraw method
-    Route::get('/withdraw-method', [WithdrawMethodController::class, 'maanWithdrawMethod'])->name('withdraw-method');
-    Route::post('/new-withdraw-method', [WithdrawMethodController::class, 'maanNewWithdrawMethod'])->name('new-withdraw-method');
-    Route::get('/edit-withdraw-method/{id}', [WithdrawMethodController::class, 'maanEditWithdrawMethod'])->name('edit-withdraw-method');
-    Route::post('/update-withdraw-method/{id}', [WithdrawMethodController::class, 'maanUpdateWithdrawMethod'])->name('update-withdraw-method');
-    Route::delete('/delete-withdraw-method/{id}', [WithdrawMethodController::class, 'maanDeleteWithdrawMethod'])->name('delete-withdraw-method');
 
     //Withdraw request
     Route::get('/withdraw-request', [WithdrawRequestController::class, 'maanWithdrawRequest'])->name('withdraw-request');

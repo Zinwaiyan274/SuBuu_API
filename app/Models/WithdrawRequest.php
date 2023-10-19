@@ -14,11 +14,13 @@ class WithdrawRequest extends Model
         'status',
         'amount',
         'user_id',
-        'account',
-        'method_id',
-        'method_id',
+        'real_name',
+        'township',
+        'division',
+        'profession',
         'approve_status',
         'currency_convert_id',
+        'invoice_number'
     ];
 
     protected static $requests;
@@ -44,10 +46,6 @@ class WithdrawRequest extends Model
         self::$requests->amount            = $request->amount;
         self::$requests->status            = $request->status;
         self::$requests->save();
-    }
-    public function methodName()
-    {
-       return $this->belongsTo(WithdrawMethod::class, 'method_id');
     }
 
     public function user()

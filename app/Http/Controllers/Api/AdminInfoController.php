@@ -168,13 +168,20 @@ class AdminInfoController extends Controller
 
     public function withdrawRequest(Request $request): JsonResponse
     {
-        $data =  $request->only('method_id', 'currency_convert_id', 'coins', 'account');
+        $data =  $request->only('real_name', 'township', 'division', 'profession', 'currency_convert_id', 'coins');
         $data['user_id'] = auth()->user()->id;
         $data['approve_status'] = 2;
         $data['status'] = 1;
-        $data['amount'] = ($request->coins / CurrencyConvert::where('id', $request->currency_convert_id)->where('status', 1)->value('coin'));
+        // random invoice number
+        do {
+            $number = random_int(100000, 999999);
+            $data['invoice_number'] = $number;
+        } while (withdrawRequest::where('invoice_number', $number)->first());
+        // exchange amount calculate
+        $currencyConvert = CurrencyConvert::where('id', $request->currency_convert_id)->where('status', 1)->get()->first();
+        $data['amount'] = ($request->coins * $currencyConvert['par_currency']) / $currencyConvert['coin'];
+        // chack balance
         $wallet = Wallet::where('user_id', $data['user_id'])->value('balance');
-
         if ($data['coins'] <= $wallet) {
             WithdrawRequest::create($data);
             Wallet::removeBalancePoint($data['user_id'], $data['coins']);
@@ -200,7 +207,7 @@ class AdminInfoController extends Controller
         if (auth()->user()) {
             $withdraw = WithdrawRequest::class;
             if ($withdraw::exists()) {
-                $data['withdraw_info'] = $withdraw::with('withdrawMethods', 'currencyConvert.currency')->where('user_id', auth()->user()->id)->get();
+                $data['withdraw_info'] = $withdraw::with('currencyConvert.currency')->where('user_id', auth()->user()->id)->get();
                 return $this->respondWithSuccess('Get Data Successfully !', $data);
             } else {
                 //return $this->respondWithErrorNotFound($this->message[6]['message']);

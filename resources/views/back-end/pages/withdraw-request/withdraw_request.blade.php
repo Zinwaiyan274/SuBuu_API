@@ -30,9 +30,10 @@
                                 <tr>
                                     <th>{{ __('#') }}</th>
                                     <th>{{ __('Name') }}</th>
+                                    <th>{{ __('township') }}</th>
+                                    <th>{{ __('division') }}</th>
+                                    <th>{{ __('profession') }}</th>
                                     <th>{{ __('Points') }}</th>
-                                    <th>{{ __('Method') }}</th>
-                                    <th>{{ __('Account') }}</th>
                                     <th>{{ __('Amount') }}</th>
                                     <th>{{ __('Created At') }}</th>
                                     <th>{{ __('Status') }}</th>
@@ -43,11 +44,12 @@
                                 @foreach ($requests as $request)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ optional($request->user)->name }}</td>
+                                        <td>{{ $request->real_name }}</td>
+                                        <td>{{ $request->township }}</td>
+                                        <td>{{ $request->division }}</td>
+                                        <td>{{ $request->profession }}</td>
                                         <td>{{ $request->coins }}</td>
-                                        <td>{{ optional($request->methodName)->name }}</td>
-                                        <td>{{ $request->account }}</td>
-                                        <td>{{ optional($request->convert->currency)->symbol . $request->amount }}</td>
+                                        <td>{{ $request->amount . optional($request->convert->currency)->symbol }}</td>
                                         <td>
                                             {{ date('d M Y - H:i A', strtotime($request->created_at)) }}
                                         </td>
@@ -87,11 +89,13 @@
                                                     @endif
                                                     <li>
                                                         <a href="javascript:void(0)" class="view-withdraw"
-                                                            data-name="{{ optional($request->user)->name }}"
+                                                            data-name="{{ $request->real_name }}"
+                                                            data-township="{{ $request->township }}"
+                                                            data-division="{{ $request->division }}"
+                                                            data-profession="{{ $request->profession }}"
                                                             data-points="{{ $request->coins }}"
-                                                            data-method="{{ optional($request->methodName)->name }}"
-                                                            data-account="{{ $request->account }}"
-                                                            data-amount="{{ optional($request->convert->currency)->symbol . $request->amount }}"
+                                                            data-invoice_number="{{ $request->invoice_number }}"
+                                                            data-amount="{{ $request->amount . optional($request->convert->currency)->symbol }}"
                                                             data-created_at="{{ date('d M Y - H:i A', strtotime($request->created_at)) }}"
                                                             data-status="{{ $request->approve_status }}"
                                                             data-notes="{{ $request->notes }}">
@@ -125,9 +129,10 @@
                 <div class="modal-body order-form-section loan-view-modal-wrapper">
                     <ul class="bank-status-list">
                         <li><span class="w-140">User Name </span> <span>:</span> <span class="user_name"></span></li>
+                        <li><span class="w-140">Township </span> <span>:</span> <span class="township"></span></li>
+                        <li><span class="w-140">Division </span> <span>:</span> <span class="division"></span></li>
+                        <li><span class="w-140">Profession </span> <span>:</span> <span class="profession"></span></li>
                         <li><span class="w-140">Points </span> <span>:</span> <span class="points"></span></li>
-                        <li><span class="w-140">Method </span> <span>:</span> <span class="method"></span></li>
-                        <li><span class="w-140">Account </span> <span>:</span> <span class="account"></span></li>
                         <li><span class="w-140">Amount </span> <span>:</span> <span class="amount"></span></li>
                         <li><span class="w-140">Created At </span> <span>:</span> <span class="created_at"></span></li>
                         <li><span class="w-140">Status </span> <span>:</span> <span class="status"></span></li>
