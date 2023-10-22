@@ -10,9 +10,11 @@ function getQuestions(id) {
 
 $('.view-withdraw').on('click', function() {
     $('.user_name').text($(this).data('name'))
+    $('.township').text($(this).data('township'))
+    $('.division').text($(this).data('division'))
+    $('.profession').text($(this).data('profession'))
     $('.points').text($(this).data('points'))
-    $('.method').text($(this).data('method'))
-    $('.account').text($(this).data('account'))
+    $('.invoice_number').text($(this).data('invoice_number'))
     $('.amount').text($(this).data('amount'))
     $('.created_at').text($(this).data('created_at'))
     var status = $(this).data('status');

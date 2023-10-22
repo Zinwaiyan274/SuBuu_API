@@ -11,10 +11,10 @@ class WithdrawRequest extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function withdrawMethods()
-    {
-        return $this->belongsTo(WithdrawMethod::class,'method_id');
-    }
+    // public function withdrawMethods()
+    // {
+    //     return $this->belongsTo(WithdrawMethod::class,'method_id');
+    // }
 
     public function currencyConvert()
     {

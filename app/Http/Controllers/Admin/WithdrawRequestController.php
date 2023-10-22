@@ -11,7 +11,7 @@ class WithdrawRequestController extends Controller
 {
     public function maanWithdrawRequest()
     {
-        $requests = WithdrawRequest::with('user:id,name', 'methodName:id,name', 'convert.currency:id,symbol')
+        $requests = WithdrawRequest::with('user:id,name', 'convert.currency:id,symbol')
                     ->when(request('search'), function($q) {
                         $q->where('account', 'like', '%'.request('search').'%')
                         ->orWhere('amount', 'like', '%'.request('search').'%')
@@ -19,9 +19,6 @@ class WithdrawRequestController extends Controller
                     })
                     ->orWhereHas('user', function($query) {
                         $query->where('name', 'like', '%'.request('search').'%');
-                    })
-                    ->orWhereHas('methodName', function($method) {
-                        $method->where('name', 'like', '%'.request('search').'%');
                     })
                     ->latest()
                     ->paginate(10);
