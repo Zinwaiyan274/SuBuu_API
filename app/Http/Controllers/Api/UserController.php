@@ -64,7 +64,7 @@ class UserController extends Controller
                 return $this->respondWithSuccess('User login successfully!', $data);
             } else {
                 return response()->json([
-                    'error'   => true,
+                    'success'   => false,
                     'message'   => __('Sorry, your account is not active.'),
                 ], 401);
             }
