@@ -12,7 +12,7 @@ class BlogCategoryController extends Controller
         $categories = BlogCategory::all();
 
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'data' => $categories
         ]);
     }

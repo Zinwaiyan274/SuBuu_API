@@ -27,7 +27,7 @@ class UserController extends Controller
 
         $data = User::find($request->email);
 
-        if($data) {
+        if(!$data) {
             if($request->refer === 'RF5869') {
                 $createdata = $request->only('name', 'email', 'password', 'refer');
                 $createdata['image'] = $request->image ? $this->upload($request, 'image') : NULL;
