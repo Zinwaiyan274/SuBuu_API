@@ -23,6 +23,8 @@ class UserController extends Controller
                     ->orWhere('user_type', 'like', '%' . request('search') . '%')
                     ->orWhere('refer_code', 'like', '%' . request('search') . '%');
             })
+            ->select('users.*', 'points.user_id', 'points.total_point')
+            ->join('points', 'users.id', 'points.user_id')
             ->latest()
             ->paginate(10);
         return view('back-end.pages.user.user', compact('users'));

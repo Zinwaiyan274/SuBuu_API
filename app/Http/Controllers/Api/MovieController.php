@@ -20,8 +20,15 @@ class MovieController extends Controller
     {
         $movie = Movie::with('categories')->find($id);
 
-        return response()->json([
-            'movie' => $movie
-        ]);
+        if($movie) {
+            return response()->json([
+                'movie' => $movie
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => 'Invalid movie id'
+            ]);
+        }
     }
 }
