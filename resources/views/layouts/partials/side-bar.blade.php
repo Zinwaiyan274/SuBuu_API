@@ -29,6 +29,14 @@
                     {{__('Reports')}}
                 </a>
             </li>
+            <li class="{{ Request::routeIs('game') ? 'active' : ''}}">
+                <a @class(['active' => Route::is('game')]) href="{{ route('game') }}">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-chess"></i>
+                    </span>
+                    {{__('Games')}}
+                </a>
+            </li>
             <li class="dropdown {{ Request::routeIs('blog', 'view-blog', 'edit-blog', 'blog-category', 'edit-blog-category') ? 'active' : ''}}">
                 <a href="#">
                     <span class="sidebar-icon">
