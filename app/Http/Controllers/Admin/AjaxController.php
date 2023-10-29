@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Quiz;
+use App\Models\Game;
 
+use App\Models\Quiz;
 use App\Models\User;
 use App\Models\Reward;
 use App\Models\Wallet;
@@ -39,6 +40,9 @@ class AjaxController extends Controller
                 case 'Movie Category '.end($statusLastText):
                     $test= MovieCategory::class;
                     break;
+                case 'Game '.end($statusLastText):
+                    $test= Game::class;
+                     break;
                 case 'Quiz '.end($statusLastText):
                    $test= Quiz::class;
                     break;

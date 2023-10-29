@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\Admin\EnvController;
 use App\Http\Controllers\Admin\AjaxController;
 use App\Http\Controllers\Admin\BlogController;
@@ -88,6 +89,14 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
         Route::get('/edit-movie-category/{id}', 'maanEditCategory')->name('edit-movie-category');
         Route::post('/update-movie-category/{id}', 'maanUpdateCategory')->name('update-movie-category');
         Route::delete('/delete-movie-category/{id}', 'maanDeleteCategory')->name('delete-movie-category');
+    });
+
+    Route::controller(GameController::class)->group(function() {
+        Route::get('/game', 'maanGame')->name('game');
+        Route::post('/new-game', 'maanNewGame')->name('new-game');
+        Route::get('/edit-game/{id}', 'maanEditGame')->name('edit-game');
+        Route::post('/update-game/{id}', 'maanUpdateGame')->name('update-game');
+        Route::delete('/delete-game/{id}', 'maanDeleteGame')->name('delete-game');
     });
 
     // Music CRUD
