@@ -44,6 +44,7 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::post('/add-point-spin','addPointSpin');
             Route::post('/remove-point','removePointSpin');
             Route::post('/add-point-quiz','addPointQuiz');
+            Route::get('/quiz/{category_id}', 'quizByCategory')->name('quiz.category');
             //withdraw api..
             Route::post('/withdraw-request','withdrawRequest');
             Route::get('/withdraw-history','withdrawHistory');
