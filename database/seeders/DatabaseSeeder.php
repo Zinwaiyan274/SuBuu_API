@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             UserTableSeeder::class,
             Rewards::class,
             CurrencyConverts::class,
-            DailyRewardsSeeder::class,
+            // DailyRewardsSeeder::class,
             QuizCategories::class,
             Quizzes::class,
             Questions::class,
