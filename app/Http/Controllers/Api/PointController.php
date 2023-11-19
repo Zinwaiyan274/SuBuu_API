@@ -35,7 +35,7 @@ class PointController extends Controller
 
         if($userData){
             $data = [
-                'total_point' => $request->ponint,
+                'total_point' => $request->point,
             ];
             $userData->update($data);
         }elseif(!$userData){
