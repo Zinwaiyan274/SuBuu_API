@@ -41,7 +41,7 @@ class PointController extends Controller
         }elseif(!$userData){
             $data = [
                 'user_id' => $userId,
-                'total_point' => $request->point,
+                'total_point' => $userData->total_point + $request->point,
                 'withdrawed_point' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
