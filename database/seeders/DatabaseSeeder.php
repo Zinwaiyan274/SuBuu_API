@@ -20,14 +20,14 @@ class DatabaseSeeder extends Seeder
             AdnetworkSeeder::class,
             UserTableSeeder::class,
             Rewards::class,
-            // CurrencyConverts::class,
-            // DailyRewardsSeeder::class,
-            // QuizCategories::class,
-            // Quizzes::class,
-            // Questions::class,
-            // UserGains::class,
-            // UserQuizzes::class,
-            // WithdrawRequests::class,
+            CurrencyConverts::class,
+            DailyRewardsSeeder::class,
+            QuizCategories::class,
+            Quizzes::class,
+            Questions::class,
+            UserGains::class,
+            UserQuizzes::class,
+            WithdrawRequests::class,
         ]);
     }
 }
