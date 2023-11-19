@@ -27,38 +27,29 @@ class PointController extends Controller
     }
 
     /* Give Point */
-    public function givePoint(){
+    public function givePoint(Request $request){
         $userId = Auth::user()->id;
 
         $userData = Point::where('user_id', $userId)->first();
-        $totalPoint = 0;
+        // $totalPoint = 0;
 
         if($userData){
-            $totalPoint = $userData->total_point;
-        }
-
-        if(!$userData){
+            $data = [
+                'total_point' => $request->ponint,
+            ];
+            $userData->update($data);
+        }elseif(!$userData){
             $data = [
                 'user_id' => $userId,
-                'total_point' => 10,
+                'total_point' => $request->point,
                 'withdrawed_point' => 0,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ];
 
             Point::insert($data);
-
-
-        } else {
-            $totalPoint += 10;
-
-            $data = [
-                'total_point' => $totalPoint,
-            ];
-
-            Point::where('user_id', $userId)->update($data);
         }
 
-        return response()->json($totalPoint, 200);
+        return response()->json($userData, 200);
     }
 }
