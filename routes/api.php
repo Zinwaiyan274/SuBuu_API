@@ -90,6 +90,11 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/music', 'musicList')->name('music-list');
             Route::get('/single-music/{id}', 'singleMuisc')->name('single-music');
         });
+
+        Route::controller(Api\NotificationController::class)->group(function() {
+            Route::get('/notifications/point' , 'getPointNotifications');
+            Route::get('/notifications' , 'getNotifications');
+        });
     });
 });
 
