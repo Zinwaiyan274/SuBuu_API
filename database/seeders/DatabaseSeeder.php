@@ -25,9 +25,9 @@ class DatabaseSeeder extends Seeder
             QuizCategories::class,
             Quizzes::class,
             Questions::class,
-            UserGains::class,
-            UserQuizzes::class,
-            WithdrawRequests::class,
+            // UserGains::class,
+            // UserQuizzes::class,
+            // WithdrawRequests::class,
         ]);
     }
 }
