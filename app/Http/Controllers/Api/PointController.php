@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use Carbon\Carbon;
 use App\Models\Point;
+use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,14 @@ class PointController extends Controller
 
             Point::insert($data);
         }
+
+        $notification = [
+            'type_id' => 1,
+            'user_id' => $userId,
+            'data' => $request->point . " have been added successfully!",
+        ];
+
+        Notification::insert($notification);
 
         return $this->respondWithSuccess('Success.', $userData);
     }
