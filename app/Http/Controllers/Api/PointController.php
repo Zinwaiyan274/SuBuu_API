@@ -54,7 +54,7 @@ class PointController extends Controller
         $notification = [
             'type_id' => 1,
             'user_id' => $userId,
-            'data' => $request->point . " have been added successfully!",
+            'data' => json_encode($request->point . " have been added successfully!"),
         ];
 
         Notification::insert($notification);
