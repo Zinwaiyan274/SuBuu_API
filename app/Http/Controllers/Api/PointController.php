@@ -50,6 +50,6 @@ class PointController extends Controller
             Point::insert($data);
         }
 
-        return response()->json($userData, 200);
+        return $this->respondWithSuccess('Success.', $userData);
     }
 }
