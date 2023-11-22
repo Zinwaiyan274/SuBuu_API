@@ -78,6 +78,9 @@ class UserController extends Controller
                 $data['name']       = $userInfo->name;
                 $data['email']      = $userInfo->email;
                 $data['refer']      = $userInfo->refer;
+
+                User::updateAccessDate($userInfo->id);
+
                 return $this->respondWithSuccess('User login successfully!', $data);
             } else {
                 return response()->json([

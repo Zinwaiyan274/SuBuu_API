@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AdnetworkSeeder::class,
             UserTableSeeder::class,
             Rewards::class,
+            NotificationTypeSeeder::class,
             // CurrencyConverts::class,
             // DailyRewardsSeeder::class,
             // QuizCategories::class,

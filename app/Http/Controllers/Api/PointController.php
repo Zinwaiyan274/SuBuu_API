@@ -6,19 +6,24 @@ use Carbon\Carbon;
 use App\Models\Point;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Notification;
+use App\Models\NotificationType;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 class PointController extends Controller
 {
+    private $dailyPoint = 10;
     /* Get User Point */
-    public function getPoint(){
+    public function getPoint()
+    {
         $userId = Auth::user()->id;
 
-        if($userId){
+        if ($userId) {
             $totalPoint = Point::select('total_point')->where('user_id', $userId)->first();
 
             return response()->json($totalPoint, 200);
-        } else{
+        } else {
             return response()->json([
                 'status' => 204,
                 'msg' => "There's no data!"
@@ -27,17 +32,18 @@ class PointController extends Controller
     }
 
     /* Give Point */
-    public function givePoint(){
+    public function givePoint()
+    {
         $userId = Auth::user()->id;
 
         $userData = Point::where('user_id', $userId)->first();
         $totalPoint = 0;
 
-        if($userData){
+        if ($userData) {
             $totalPoint = $userData->total_point;
         }
 
-        if(!$userData){
+        if (!$userData) {
             $data = [
                 'user_id' => $userId,
                 'total_point' => 10,
@@ -47,8 +53,6 @@ class PointController extends Controller
             ];
 
             Point::insert($data);
-
-
         } else {
             $totalPoint += 10;
 
@@ -59,6 +63,37 @@ class PointController extends Controller
             Point::where('user_id', $userId)->update($data);
         }
 
-        return response()->json($totalPoint, 200);
+        $notification_type = NotificationType::where("name", "Point")->get();
+
+        $type_id =  $notification_type->first()->id;
+
+        $notification = Notification::create([
+            "type_id" => $type_id,
+            "user_id" => $userId,
+            "data" => [
+                "message" => "Point is added!",
+                "data" => $totalPoint,
+            ],
+        ]);
+
+        return response()->json([
+            "point" => $totalPoint,
+            "notification" => $notification
+        ], 200);
+    }
+
+    public function getDailyPoint()
+    {
+        $userId = Auth::user()->id;
+
+        $userPoints = Point::where('user_id', $userId)->first();
+
+        $newTotalPoint = $userPoints->total_point + $this->dailyPoint;
+
+        Point::where('user_id', $userId)->update(['total_point' => $newTotalPoint]);
+
+        return response()->json([
+            'message' => 'Daily Point is added to your account'
+        ], 200);
     }
 }
