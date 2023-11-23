@@ -1,0 +1,22 @@
+on: 
+  push:
+    branches:
+      - master_test
+name: 🚀 Deploy website on push
+jobs:
+  web-deploy:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Get latest code
+      uses: actions/checkout@v3
+
+    - name: Set file permissions
+      run: chmod -R 777 storage
+    
+    - name: 📂 Sync files
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      with:
+        server: 80.208.229.14
+        username: subuu
+        password: 6JcdykpACL44KR64
