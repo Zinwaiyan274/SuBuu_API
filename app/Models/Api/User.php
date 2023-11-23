@@ -35,4 +35,9 @@ class User extends Authenticatable
             return 0 ;
         }
     }
+
+    public static function updateAccessDate($user_id)
+    {
+        return User::where('id' , $user_id)->update(['access_date'=>now()->format('Y-m-d H:i:s')]);
+    }
 }
