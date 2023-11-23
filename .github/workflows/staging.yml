@@ -20,3 +20,4 @@ jobs:
         server: 80.208.229.14
         username: subuu
         password: 6JcdykpACL44KR64
+        args: --ftp-passive-mode
