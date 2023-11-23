@@ -14,6 +14,6 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
-        server: subuu.help4pdf.info
+        server: ftp://2a02:7b40:50d0:e50e::1:21
         username: subuu
         password: 6JcdykpACL44KR64
