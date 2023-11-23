@@ -7,7 +7,6 @@ use App\Models\Point;
 use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Notification;
 use App\Models\NotificationType;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
