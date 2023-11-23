@@ -1,4 +1,4 @@
-on: 
+on:
   push:
     branches:
       - master_test
@@ -12,8 +12,8 @@ jobs:
       uses: actions/checkout@v3
 
     - name: Set file permissions
-      run: chmod -R 777 storage
-    
+      run: chmod 775 storage
+
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@v4.3.4
       with:
