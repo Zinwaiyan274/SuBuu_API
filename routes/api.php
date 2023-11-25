@@ -87,7 +87,6 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/movie/{id}' , 'movieDetail')->name('movie-detail');
         });
 
-<<<<<<< Updated upstream
         Route::controller(Api\MusicController::class)->group(function() {
             Route::get('/music', 'musicList')->name('music-list');
             Route::get('/single-music/{id}', 'singleMuisc')->name('single-music');
@@ -97,12 +96,6 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::get('/notifications/point' , 'getPointNotifications');
             Route::get('/notifications' , 'getNotifications');
         });
-=======
-        Route::controller(Api\NotificationController::class)->group(function() {
-            Route::get('/notification/point' , 'getPointNotifications')->name('point-notification');
-        });
-
->>>>>>> Stashed changes
     });
 });
 
