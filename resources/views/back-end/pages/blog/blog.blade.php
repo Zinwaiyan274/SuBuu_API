@@ -67,7 +67,6 @@
                     <div class="row justify-content-center">
                         <div class="col-sm-9">
                             <div class="order-form-section">
-                                c
                                     @csrf
                                     <div class="row">
                                         <div class="col-lg-6 mt-2">
