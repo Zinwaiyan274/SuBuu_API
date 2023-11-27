@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('image');
             $table->string('artist_name');
             $table->boolean('status')->default(0);
+            $table->bigInteger('audio_count')->nullable();
             $table->timestamps();
         });
     }

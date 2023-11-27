@@ -41,6 +41,11 @@ class MusicController extends Controller
                 'artist_id' => $request->artist,
                 'status' => $request->status
             ]);
+
+            $artist = Artist::where('id', $request->artist)->first();
+            $artist->update([
+                'audio_count' => $artist->audio_count + 1
+            ]);
         }
 
         return response()->json([
@@ -112,6 +117,11 @@ class MusicController extends Controller
             }
 
             $audio->delete();
+
+            $artist = Artist::where('id', $audio->artist_id)->first();
+            $artist->update([
+                'audio_count' => $artist->audio_count - 1
+            ]);
         }
 
         return response()->json([

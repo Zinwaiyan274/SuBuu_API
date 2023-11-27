@@ -90,6 +90,10 @@ Route::prefix('v1')->name('api.')->group(function () {
         Route::controller(Api\MusicController::class)->group(function() {
             Route::get('/music', 'musicList')->name('music-list');
             Route::get('/single-music/{id}', 'singleMuisc')->name('single-music');
+            Route::get('/music-by-artist/{id}', 'musicByArtist');
+            Route::get('/artists', 'artistsList');
+            Route::post('/add-favorite', 'giveLike');
+            Route::get('/favorite-music', 'favoriteMusic');
         });
 
         Route::controller(Api\NotificationController::class)->group(function() {

@@ -80,4 +80,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Wallet::class);
     }
+
+    public function audioLike(){
+        return $this->hasMany(AudioLike::class);
+    }
 }

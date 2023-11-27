@@ -13,14 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('audio', function (Blueprint $table) {
+        Schema::create('audio_likes', function (Blueprint $table) {
             $table->id();
-            $table->string('image')->nullable();
-            $table->string('audio');
-            $table->string('audio_title');
-            $table->unsignedBigInteger('artist_id');
-            $table->foreign('artist_id')->references('id')->on('artists');
-            $table->boolean('status')->default(0);
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->unsignedBigInteger('audio_id');
+            $table->foreign('audio_id')->references('id')->on('audio');
+            $table->boolean('like');
             $table->timestamps();
         });
     }
@@ -32,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('audio');
+        Schema::dropIfExists('audio_likes');
     }
 };
