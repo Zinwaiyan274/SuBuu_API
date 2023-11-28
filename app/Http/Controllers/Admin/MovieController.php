@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Movie;
 use App\Helper\CustomHelper;
-use App\Models\MovieCategory;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\MovieCategory;
+use App\Models\NotificationType;
+use App\Http\Controllers\Controller;
 
 class MovieController extends Controller
 {
@@ -47,13 +49,22 @@ class MovieController extends Controller
         $imageUrl = CustomHelper::imageUpload($request->file('thumbnail'),'back-end/img/thumbnails/');
 
             $movie = Movie::create([
-                'title' => $request->title,            
+                'title' => $request->title,
                 'description'=> $request->description,
                 'url' => $request->url,
                 'thumbnail' => $imageUrl,
             ]);
 
-            $movie->categories()->attach($request->category_id); 
+            $movie->categories()->attach($request->category_id);
+
+            $type_id = NotificationType::select('id')->where("name", "Other")->first();
+
+            $notification = Notification::create([
+                "type_id" => $type_id,
+                "data" => [
+                    "message" => "New Movie Added",
+                ],
+            ]);
 
             return response()->json([
                 'message' => 'Movies Created Successfully!',
@@ -85,7 +96,7 @@ class MovieController extends Controller
             'category_id' => 'required',
             'thumbnail' => 'mimes:png,jpg,svg,jpeg,gif|max:2028',
         ]);
-        
+
         $oldRecord = Movie::find($id);
 
         $movie = Movie::find($id)->update([
@@ -95,7 +106,7 @@ class MovieController extends Controller
             'thumbnail'=> CustomHelper::imageUpload($request->thumbnail  , 'backend/img/thumbnails/' , $oldRecord->thumbnail),
         ]);
 
-        $oldRecord->categories()->sync($request->category_id); 
+        $oldRecord->categories()->sync($request->category_id);
 
         return redirect('/movies')->with('message', 'Movie updated successfully.');
     }

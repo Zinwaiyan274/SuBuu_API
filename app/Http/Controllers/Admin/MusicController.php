@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Audio;
 use App\Models\Artist;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\NotificationType;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -47,6 +49,15 @@ class MusicController extends Controller
                 'audio_count' => $artist->audio_count + 1
             ]);
         }
+
+        $type_id = NotificationType::select('id')->where("name", "Other")->first();
+
+        $notification = Notification::create([
+            "type_id" => $type_id,
+            "data" => [
+                "message" => "New Music Added",
+            ],
+        ]);
 
         return response()->json([
             'message' => __('Audio created successfully.'),

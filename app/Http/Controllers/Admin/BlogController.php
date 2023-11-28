@@ -7,7 +7,9 @@ use App\Models\Blog;
 use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 // use Illuminate\Support\Facades\File;
+use App\Models\Notification;
 use Illuminate\Http\Request;
+use App\Models\NotificationType;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -41,6 +43,15 @@ class BlogController extends Controller
             'title' => $request->title,
             'content' => $content,
             'category_id' => $request->category_id,
+        ]);
+
+        $type_id = NotificationType::select('id')->where("name", "Other")->first();
+
+        $notification = Notification::create([
+            "type_id" => $type_id,
+            "data" => [
+                "message" => "New Blog Added",
+            ],
         ]);
 
         return response()->json([
