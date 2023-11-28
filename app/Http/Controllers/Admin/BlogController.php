@@ -45,7 +45,9 @@ class BlogController extends Controller
             'category_id' => $request->category_id,
         ]);
 
-        $type_id = NotificationType::select('id')->where("name", "Other")->first();
+        $notification_type = NotificationType::where("name", "Other")->get();
+
+        $type_id =  $notification_type->first()->id;
 
         $notification = Notification::create([
             "type_id" => $type_id,
