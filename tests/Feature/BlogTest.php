@@ -117,6 +117,13 @@ class BlogTest extends TestCase
     {
         $user = $this->authenticate();
         $blog = Blog::first();
+        if(!$blog) {
+            $blog = Blog::create([
+                'category_id' => $this->getBlogCategoryId(),
+                'title' => 'Test Blog',
+                'content' => 'This is test blog',
+            ]);
+        }
         $response = $this->actingAs($user)->get("/api/v1/blogs/{$blog->id}/detail");
 
         $response->assertStatus(200);

@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{__('Update blog category')}}
+    {{__('Edit game')}}
 @endsection
 
 @section('main_content')
@@ -18,7 +18,7 @@
         <div class="tab-content order-summary-tab">
             <div class="tab-pane fade active show" id="add-new-petty" role="tabpanel">
                 <div class="table-header">
-                    <h4>Update game</h4>
+                    <h4>Edit game</h4>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-sm-8">
