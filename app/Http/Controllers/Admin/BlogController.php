@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use App\Models\BlogCategory;
 // use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,6 +26,7 @@ class BlogController extends Controller
     }
 
     public function maanViewBlog($id) {
+        Log::info($id);
         $post = Blog::where('id', $id)->get()->first();
         return view(
             'back-end.pages.blog.blog-view',
