@@ -2,22 +2,23 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
-use App\Models\Adnetwork;
-use App\Models\Api\DailyRewards;
-use App\Models\Api\Question;
-use App\Models\Api\Quiz;
-use App\Models\Api\QuizCategory;
-use App\Models\Api\UserQuiz;
-use App\Models\Api\WithdrawMethod;
-use App\Models\CurrencyConvert;
+use App\Models\Point;
 use App\Models\Reward;
-use App\Models\UserGain;
 use App\Models\Wallet;
-use App\Models\Api\WithdrawRequest;
-use Illuminate\Http\JsonResponse;
+use App\Models\Api\Quiz;
+use App\Models\UserGain;
+use App\Models\Adnetwork;
+use App\Models\Api\Question;
+use App\Models\Api\UserQuiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use App\Models\CurrencyConvert;
+use App\Models\Api\DailyRewards;
+use App\Models\Api\QuizCategory;
+use Illuminate\Http\JsonResponse;
+use App\Models\Api\WithdrawMethod;
+use App\Models\Api\WithdrawRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class AdminInfoController extends Controller
