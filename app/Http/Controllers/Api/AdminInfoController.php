@@ -188,10 +188,15 @@ class AdminInfoController extends Controller
         $currencyConvert = CurrencyConvert::where('id', $request->currency_convert_id)->where('status', 1)->get()->first();
         $data['amount'] = ($request->coins * $currencyConvert['par_currency']) / $currencyConvert['coin'];
         // chack balance
-        $wallet = Wallet::where('user_id', $data['user_id'])->value('balance');
-        if ($data['coins'] <= $wallet) {
+        // $wallet = Wallet::where('user_id', $data['user_id'])->value('balance');
+        $point = Point::where('user_id', $data['user_id'])->first();
+        if ($data['coins'] <= $point->total_point) {
             WithdrawRequest::create($data);
-            Wallet::removeBalancePoint($data['user_id'], $data['coins']);
+            // Wallet::removeBalancePoint($data['user_id'], $data['coins']);
+            $balance = $point->value('total_point') - $data['coins'];
+            $point->update([
+                'total_point' => $balance
+            ]);
             return $this->respondWithSuccess('Date added successfully !', $data);
         } else {
             return $this->respondWithUnavilableBalance($this->message[10]['message'], $data);
