@@ -220,7 +220,7 @@ class AdminInfoController extends Controller
         if (auth()->user()) {
             $withdraw = WithdrawRequest::class;
             if ($withdraw::exists()) {
-                $data['withdraw_info'] = $withdraw::with('currencyConvert.currency')->where('user_id', auth()->user()->id)->get();
+                $data['withdraw_info'] = $withdraw::with('currencyConvert.currency')->where('user_id', auth()->user()->id)->latest()->get();
                 return $this->respondWithSuccess('Get Data Successfully !', $data);
             } else {
                 //return $this->respondWithErrorNotFound($this->message[6]['message']);
