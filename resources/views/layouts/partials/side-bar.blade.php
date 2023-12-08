@@ -1,6 +1,6 @@
 <nav class="side-bar">
     <div class="side-bar-logo">
-        <a href="{{ route('dashboard') }}"><img height="35" src="{{ asset(settings()->footer_logo) }}" alt="Logo"></a>
+        <a href="{{ route('dashboard') }}"><img  src="{{ asset('assets/images/logo/Web Logo.png') }}" alt="Logo"></a>
         <button class="close-btn"><i class="fal fa-times"></i></button>
     </div>
     <div class="side-bar-manu">
@@ -20,6 +20,18 @@
                     </span>
                     {{ __('Manage Users') }}
                 </a>
+            </li>
+            <li class="dropdown {{ Request::routeIs('audio','edit-audio','artist','edit-artist', 'album', 'edit-album') ? 'active' : ''}}">
+                <a href="#">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-music"></i>
+                    </span>
+                    {{__('Music')}} </a>
+                <ul>
+                    <li><a @class(['active' => Route::is('audio')]) href="{{ route('audio') }}">{{__('Audio')}}</a></li>
+                    <li><a @class(['active' => Route::is('artist')]) href="{{ route('artist') }}">{{__('Artist')}}</a></li>
+                    <li><a @class(['active' => Route::is('album')]) href="{{ route('album') }}">{{__('Album')}}</a></li>
+                </ul>
             </li>
             <li class="{{ Request::routeIs('history') ? 'active' : ''}}">
                 <a @class(['active' => Route::is('history')]) href="{{ route('history') }}">
@@ -55,6 +67,7 @@
                     </span>
                     {{__('Movie')}} </a>
                 <ul>
+                    <li><a @class(['active' => Route::is('movies') || Route::is('edit-movie')]) href="{{ url('movies') }}">{{__('Movie')}}</a></li>
                     <li><a @class(['active' => Route::is('movie-category') || Route::is('edit-movie-category')]) href="{{ url('movie-category') }}">{{__('Category')}}</a></li>
                 </ul>
             </li>

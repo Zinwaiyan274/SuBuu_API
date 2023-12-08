@@ -90,7 +90,7 @@ class Controller extends BaseController
     protected function respondWithValidatorError($message = '', $data = [], $code = 422)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -135,7 +135,7 @@ class Controller extends BaseController
     protected function respondWithError($message = '', $data = [], $code = 400)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -144,7 +144,7 @@ class Controller extends BaseController
     protected function respondWithErrorNotFound($message = '', $data = [], $code = 404)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -153,7 +153,7 @@ class Controller extends BaseController
     protected function respondWithAlreadyExists($message = '', $data = [], $code = 208)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -162,7 +162,7 @@ class Controller extends BaseController
     protected function respondWithUnauthorized($message = '', $data = [], $code = 401)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -170,7 +170,7 @@ class Controller extends BaseController
     protected function respondWithNotAcceptable($message = '', $data = [], $code = 406)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);
@@ -178,7 +178,7 @@ class Controller extends BaseController
     protected function respondWithUnavilableBalance($message = '', $data = [], $code = 451)
     {
         return response()->json([
-            'error'   => true,
+            'success'   => false,
             'message'   => $message,
             'data'      => $data
         ],$code);

@@ -21,7 +21,6 @@ class User extends Authenticatable
 
     protected static $users;
 
-
     public static function addUsers($request)
     {
         self::$users = new User();
@@ -80,5 +79,9 @@ class User extends Authenticatable
     public function wallet()
     {
         return $this->hasOne(Wallet::class);
+    }
+
+    public function audioLike(){
+        return $this->hasMany(AudioLike::class);
     }
 }

@@ -21,27 +21,43 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'password' => 'required',
-            'status' => 'nullable|integer',
-            'phone' => 'required|unique:users',
             'email' => 'required|email|unique:users',
+            'refer' => 'required|string'
         ]);
 
-        $createdata = $request->only('name', 'email', 'password', 'phone', 'refer');
-        $createdata['image'] = $request->image ? $this->upload($request, 'image') : NULL;
-        $createdata['password'] = bcrypt($request->password);
-        $createdata['refer_code'] = 'RF' . random_int(0000, 9999);
-        $users = User::create($createdata);
-        \App\Models\User::balanceAdd($users->id);
-        if ($request->refer != '') {
-            \App\Models\User::referBalanceAdd($users->id, $request->refer);
-        }
-        $data = [
-            'user_id' => $users->id,
-            'token' => $users->createToken('maanRocketApp')->plainTextToken,
-            'token_type' => 'Bearer',
-        ];
+        $data = User::find($request->email);
 
-        return $this->respondWithSuccess('Success.', $data);
+        if(!$data) {
+            if($request->refer === 'RF5869') {
+                $createdata = $request->only('name', 'email', 'password', 'refer');
+                $createdata['image'] = $request->image ? $this->upload($request, 'image') : NULL;
+                $createdata['password'] = bcrypt($request->password);
+                $createdata['refer_code'] = 'RF5869';
+                $users = User::create($createdata);
+                \App\Models\User::balanceAdd($users->id);
+
+                if ($request->refer != '') {
+                    \App\Models\User::referBalanceAdd($users->id, $request->refer);
+                }
+                $data = [
+                    'user_id' => $users->id,
+                    'token' => $users->createToken('maanRocketApp')->plainTextToken,
+                    'token_type' => 'Bearer',
+                ];
+
+                return $this->respondWithSuccess('Success.', $data);
+            }  else {
+                return response()->json([
+                    'success'   => false,
+                    'message'   => __('Invalid refer code!'),
+                ], 401);
+            }
+        } else {
+            return response()->json([
+                'success' => false,
+                'message' => __('Email is already registered!'),
+            ]);
+        }
     }
 
     public function maanSignIn(Request $request)
@@ -61,12 +77,14 @@ class UserController extends Controller
                 $data['token']      = $userInfo->createToken('maanRocketApp')->plainTextToken;
                 $data['name']       = $userInfo->name;
                 $data['email']      = $userInfo->email;
-                $data['phone']      = $userInfo->phone;
                 $data['refer']      = $userInfo->refer;
+
+                User::updateAccessDate($userInfo->id);
+
                 return $this->respondWithSuccess('User login successfully!', $data);
             } else {
                 return response()->json([
-                    'error'   => true,
+                    'success'   => false,
                     'message'   => __('Sorry, your account is not active.'),
                 ], 401);
             }

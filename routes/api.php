@@ -44,6 +44,7 @@ Route::prefix('v1')->name('api.')->group(function () {
             Route::post('/add-point-spin','addPointSpin');
             Route::post('/remove-point','removePointSpin');
             Route::post('/add-point-quiz','addPointQuiz');
+            Route::get('/quiz/{category_id}', 'quizByCategory')->name('quiz.category');
             //withdraw api..
             Route::post('/withdraw-request','withdrawRequest');
             Route::get('/withdraw-history','withdrawHistory');
@@ -72,6 +73,33 @@ Route::prefix('v1')->name('api.')->group(function () {
         });
 
         Route::get('/blog-categories', [Api\BlogCategoryController::class, 'categoryList'])->name('blog-categories');
+
+        /* Point System */
+        Route::controller(Api\PointController::class)->group(function() {
+            Route::get('/get-point', 'getPoint')->name('get-point');
+            Route::post('/give-point', 'givePoint')->name('give-point');
+            Route::post('/subtract-point', 'subtractPoint')->name('subtract-point');
+            Route::middleware(['throttle:dailyPoint'])->get('/get-daily-point' , 'getDailyPoint')->name('get-daily-point');
+        });
+
+        Route::controller(Api\MovieController::class)->group(function() {
+            Route::get('/movies' , 'movieList')->name('movie-list');
+            Route::get('/movie/{id}' , 'movieDetail')->name('movie-detail');
+        });
+
+        Route::controller(Api\MusicController::class)->group(function() {
+            Route::get('/music', 'musicList')->name('music-list');
+            Route::get('/single-music/{id}', 'singleMuisc')->name('single-music');
+            Route::get('/music-by-artist/{id}', 'musicByArtist');
+            Route::get('/artists', 'artistsList');
+            Route::post('/add-favorite', 'giveLike');
+            Route::get('/favorite-music', 'favoriteMusic');
+        });
+
+        Route::controller(Api\NotificationController::class)->group(function() {
+            Route::get('/notifications/point' , 'getPointNotifications');
+            Route::get('/notifications' , 'getNotifications');
+        });
     });
 });
 

@@ -10,9 +10,14 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\QuizController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CustomAuthController;
+use App\Http\Controllers\Admin\AlbumController;
+use App\Http\Controllers\Admin\MusicController;
+use App\Http\Controllers\Admin\ArtistController;
+use App\Http\Controllers\Admin\RewardController;
 use App\Http\Controllers\Admin\MovieController;
 use App\Http\Controllers\Admin\HistoryController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\Admin\CurrencyController;
 use App\Http\Controllers\Admin\PostBackController;
 use App\Http\Controllers\Admin\QuestionController;
 use App\Http\Controllers\Admin\SettingsController;
@@ -23,6 +28,7 @@ use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\QuizCategoryController;
 use App\Http\Controllers\Admin\MovieCategoryController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
+use App\Http\Controllers\Admin\CurrencyConvertController;
 use App\Http\Controllers\Admin\WithdrawRequestController;
 
 Route::get('/', [CustomAuthController::class, 'home'])->name('home');
@@ -66,6 +72,16 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
         Route::delete('/delete-blog/{id}', 'maanDeleteBlog')->name('delete-blog');
     });
 
+
+    // Movie Category
+    Route::controller(MovieController::class)->group(function() {
+        Route::get('/movies', 'index')->name('movies');
+        Route::post('/new-movie', 'create')->name('new-movie');
+        Route::get('/edit-movie/{id}', 'edit')->name('edit-movie');
+        Route::post('/update-movie/{id}', 'update')->name('update-movie');
+        Route::delete('/delete-movie/{id}', 'delete')->name('delete-movie');
+    });
+
     // Movie Category
     Route::controller(MovieCategoryController::class)->group(function() {
         Route::get('/movie-category', 'maanCategory')->name('movie-category');
@@ -82,6 +98,30 @@ Route::group(['middleware' => ['auth:sanctum', 'verified', 'admin']], function (
         Route::post('/update-game/{id}', 'maanUpdateGame')->name('update-game');
         Route::delete('/delete-game/{id}', 'maanDeleteGame')->name('delete-game');
     });
+
+    // Music CRUD
+    Route::get('/audio', [MusicController::class, 'maanMusic'])->name('audio');
+    Route::post('/new-audio', [MusicController::class, 'maanNewAudio'])->name('new-audio');
+    Route::get('/audio/{id}', [MusicController::class, 'maanViewAudio'])->name('view-audio');
+    Route::get('/edit-audio/{id}', [MusicController::class, 'maanEditAudio'])->name('edit-audio');
+    Route::post('/update-audio/{id}', [MusicController::class, 'maanUpdateAudio'])->name('update-audio');
+    Route::delete('/delete-audio/{id}', [MusicController::class, 'maanDeleteAudio'])->name('delete-audio');
+
+    // Artist CRUD
+    Route::get('/artist', [ArtistController::class, 'maanArtist'])->name('artist');
+    Route::post('/new-artist', [ArtistController::class, 'maanNewArtist'])->name('new-artist');
+    Route::get('/artist/{id}', [ArtistController::class, 'maanViewArtist'])->name('view-artist');
+    Route::get('/edit-artist/{id}', [ArtistController::class, 'maanEditArtist'])->name('edit-artist');
+    Route::post('/update-artist/{id}', [ArtistController::class, 'maanUpdateArtist'])->name('update-artist');
+    Route::delete('/delete-artist/{id}', [ArtistController::class, 'maanDeleteArtist'])->name('delete-artist');
+
+    // Album CRUD
+    Route::get('/album', [AlbumController::class, 'maanAlbum'])->name('album');
+    Route::post('/new-album', [AlbumController::class, 'maanNewAlbum'])->name('new-album');
+    Route::get('/album/{id}', [AlbumController::class, 'maanViewAlbum'])->name('view-album');
+    Route::get('/edit-album/{id}', [AlbumController::class,'maanEditAlbum'])->name('edit-album');
+    Route::post('/update-album/{id}', [AlbumController::class, 'maanUpdateAlbum'])->name('update-album');
+    Route::delete('/delete-album/{id}', [AlbumCOntroller::class, 'maanDeleteAlbum'])->name('delete-album');
 
     //Quiz category
     Route::get('/quiz-category', [QuizCategoryController::class, 'maanCategory'])->name('quiz-category');

@@ -40,7 +40,7 @@
                                     <th>{{ __('Email') }}</th>
                                     <th>{{ __('Phone') }}</th>
                                     <th>{{ __('Refer Code') }}</th>
-                                    <th>{{ __('Balance') }}</th>
+                                    <th>{{ __('Point') }}</th>
                                     <th>{{ __('Refer By') }}</th>
                                     <th>{{ __('User Type') }}</th>
                                     <th>{{ __('Status') }}</th>
@@ -59,8 +59,8 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->refer_code }}</td>
                                         <td>
-                                            @if ($user->wallet)
-                                                {{ $user->wallet->balance }}
+                                            @if ($user->total_point)
+                                                {{ $user->total_point }}
                                             @endif
                                         </td>
                                         <td>{{ $user->refer }}</td>

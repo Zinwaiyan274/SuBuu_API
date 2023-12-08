@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminInfoController extends Controller
 {
-
-
     public function categoryInfo(): JsonResponse
     {
         $category = QuizCategory::class;
@@ -73,6 +71,15 @@ class AdminInfoController extends Controller
         } else {
             return $this->respondWithErrorNotFound('Sorry data failed !');
         }
+    }
+
+    public function quizByCategory($category_id): JsonResponse
+    {
+        $category = QuizCategory::class;
+
+        $data['quiz_info'] = $category::with('quizzes', 'quizzes.questions')->where('status', 1)->where('id', $category_id)->get();
+
+        return $this->respondWithSuccess('Get Data Successfully  !', $data);
     }
 
     public function whitdrawMethod(): JsonResponse

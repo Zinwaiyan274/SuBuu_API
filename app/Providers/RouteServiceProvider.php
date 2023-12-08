@@ -48,5 +48,13 @@ class RouteServiceProvider extends ServiceProvider
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
         });
+
+        RateLimiter::for('dailyPoint' , function (Request $request) {
+            return Limit::perDay(1)->by($request->user()->id ?: $request->ip())->response(function(){
+                return response([
+                    'message' => 'Daily Point is already claimed'
+                ]);
+            });
+        });
     }
 }

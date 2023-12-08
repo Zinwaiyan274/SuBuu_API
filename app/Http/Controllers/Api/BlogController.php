@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\Blog;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class BlogController extends Controller
@@ -13,7 +12,7 @@ class BlogController extends Controller
         $postList = Blog::latest()->get();
 
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'data' => $postList
         ]);
     }
@@ -23,7 +22,7 @@ class BlogController extends Controller
         $post = Blog::find($id);
 
         return response()->json([
-            'status' => 'success',
+            'success' => true,
             'data' => $post
         ]);
     }

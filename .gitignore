@@ -2,6 +2,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/artist_image
+/public/audio_cover
+/public/audio_file
 /storage/*.key
 /vendor
 .env
@@ -16,3 +19,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+erd.vuerd
