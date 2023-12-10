@@ -22,7 +22,7 @@
                 <div class="col-lg-12 mt-2 border-0 border-bottom">
                     <h1 class="border-0 mb-1 pb-2">Music List</h1>
                     @foreach ($songLists as $data)
-                        <h3 class="">{{ $data->audio_title }}</h3>
+                        <h3 class="">{{ $data->audio_title ?? null }}</h3>
                     @endforeach
                 </div>
             </div>
