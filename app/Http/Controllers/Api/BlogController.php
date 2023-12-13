@@ -10,7 +10,10 @@ class BlogController extends Controller
     // blog list
     public function blogList() {
         $postList = Blog::latest()->get();
-        $postList['added_date'] = $postList->created_at()->diffForHumans();
+
+        foreach ($postList as $post) {
+            $post->added_date = $post->created_at->diffForHumans();
+        }
 
         return response()->json([
             'success' => true,
