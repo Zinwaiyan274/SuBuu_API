@@ -80,13 +80,18 @@
                                             </select>
                                         </div>
 
+                                        <div class="col-lg-6 mt-2">
+                                            <label>Cover Image</label>
+                                            <input type="file" name="cover_image" class="form-control" id="cover-image" required>
+                                        </div>
+
                                         <div class="col-lg-12 mt-2">
                                             <label>{{__('Title')}}</label>
                                             <input type="text" name="title" class="form-control" placeholder="Name" required>
                                         </div>
 
                                         <div class="col-lg-12 mt-2">
-                                            <label>{{__('Description')}}</label>
+                                            <label>{{__('Content')}}</label>
                                             <textarea name="content" id="summernote"></textarea>
                                         </div>
 

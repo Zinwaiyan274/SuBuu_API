@@ -17,7 +17,9 @@
 
         <div class="container border rounded-2 py-2 mt-4">
             <h1 class="border-0 border-bottom mb-3 pb-2">{{ $title }}</h1>
-
+            <div>
+                <img class="col-lg-4" src="{{ asset($cover_image) }}" alt="Image" width="400px">
+            </div>
             <div>{!! $content !!}</div>
         </div>
     </div>

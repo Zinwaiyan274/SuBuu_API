@@ -6,6 +6,7 @@ use Tests\TestCase;
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\BlogCategory;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -56,6 +57,7 @@ class BlogTest extends TestCase
         $blog = [
             'category_id' => $this->getBlogCategoryId(),
             'title' => 'Test Blog',
+            'cover_image' => UploadedFile::fake()->image('test_blog_cover_image.jpg'),
             'content' => 'This is test blog',
         ];
         $response = $this->actingAs($user)->post('/new-blog', $blog);
@@ -88,6 +90,7 @@ class BlogTest extends TestCase
         $blogData = [
             'category_id' => $this->getBlogCategoryId(),
             'title' => 'Test updated Blog',
+            'cover_image' => UploadedFile::fake()->image('test_blog_update_cover_image.jpg'),
             'content' => 'This is updated test blog',
         ];
         $response = $this->actingAs($user)->post("/update-blog/{$blog->id}", $blogData);
@@ -121,6 +124,7 @@ class BlogTest extends TestCase
             $blog = Blog::create([
                 'category_id' => $this->getBlogCategoryId(),
                 'title' => 'Test Blog',
+                'cover_image' => UploadedFile::fake()->image('test_blog_cover_image.jpg'),
                 'content' => 'This is test blog',
             ]);
         }
