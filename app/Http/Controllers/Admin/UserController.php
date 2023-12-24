@@ -27,6 +27,7 @@ class UserController extends Controller
             ->join('points', 'users.id', 'points.user_id')
             ->latest()
             ->paginate(10);
+        // $users = User::paginate(10);
         return view('back-end.pages.user.user', compact('users'));
     }
 

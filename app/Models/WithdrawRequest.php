@@ -20,7 +20,9 @@ class WithdrawRequest extends Model
         'profession',
         'approve_status',
         'currency_convert_id',
-        'invoice_number'
+        'invoice_number',
+        'qr_image',
+        'phone',
     ];
 
     protected static $requests;

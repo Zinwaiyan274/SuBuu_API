@@ -90,6 +90,7 @@
                                                     <li>
                                                         <a href="javascript:void(0)" class="view-withdraw"
                                                             data-name="{{ $request->real_name }}"
+                                                            data-phone="{{ $request->phone }}"
                                                             data-township="{{ $request->township }}"
                                                             data-division="{{ $request->division }}"
                                                             data-profession="{{ $request->profession }}"
@@ -98,7 +99,8 @@
                                                             data-amount="{{ $request->amount . optional($request->convert->currency)->symbol }}"
                                                             data-created_at="{{ date('d M Y - H:i A', strtotime($request->created_at)) }}"
                                                             data-status="{{ $request->approve_status }}"
-                                                            data-notes="{{ $request->notes }}">
+                                                            data-notes="{{ $request->notes }}"
+                                                            data-qrimage="{{ asset($request->qr_image) }}">
                                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                                             {{ __('View') }}
                                                         </a>
@@ -129,6 +131,7 @@
                 <div class="modal-body order-form-section loan-view-modal-wrapper">
                     <ul class="bank-status-list">
                         <li><span class="w-140">User Name </span> <span>:</span> <span class="user_name"></span></li>
+                        <li><span class="w-140">User Phone </span> <span>:</span> <span class="phone"></span></li>
                         <li><span class="w-140">Township </span> <span>:</span> <span class="township"></span></li>
                         <li><span class="w-140">Division </span> <span>:</span> <span class="division"></span></li>
                         <li><span class="w-140">Profession </span> <span>:</span> <span class="profession"></span></li>
@@ -137,6 +140,9 @@
                         <li><span class="w-140">Created At </span> <span>:</span> <span class="created_at"></span></li>
                         <li><span class="w-140">Status </span> <span>:</span> <span class="status"></span></li>
                         <li><span class="w-140">Notes </span> <span>:</span> <span class="notes"></span></li>
+                        <li>
+                            <img src="" alt="qr image" width="360px" id="qr_image">
+                        </li>
                     </ul>
                 </div>
             </div>
