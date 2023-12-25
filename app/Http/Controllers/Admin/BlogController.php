@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Admin;
 use DOMDocument;
 use App\Models\Blog;
 use Illuminate\Support\Str;
-use App\Models\BlogCategory;
+use App\Helper\CustomHelper;
 // use Illuminate\Support\Facades\File;
+use App\Models\BlogCategory;
 use App\Models\Notification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\NotificationType;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
@@ -27,10 +29,11 @@ class BlogController extends Controller
     }
 
     public function maanViewBlog($id) {
+        Log::info($id);
         $post = Blog::where('id', $id)->get()->first();
         return view(
             'back-end.pages.blog.blog-view',
-            ['title' => $post->title, 'content' => $post->content]
+            ['title' => $post->title, 'content' => $post->content, 'cover_image' => $post->cover_image]
         );
     }
 
@@ -39,8 +42,10 @@ class BlogController extends Controller
         $this->BlogValidation($request);
 
         $content = $this->StoreImage($request);
+        $coverImageUrl = CustomHelper::imageUpload($request->file('cover_image'),'back-end/img/blog_cover_image/');
         Blog::create([
             'title' => $request->title,
+            'cover_image' => $coverImageUrl,
             'content' => $content,
             'category_id' => $request->category_id,
         ]);
@@ -67,6 +72,9 @@ class BlogController extends Controller
         $blog = Blog::find($id);
 
         if($blog) {
+            if($blog->cover_image) {
+                Storage::delete($blog->cover_image);
+            }
             $this->DeleteImage($blog->content);
             $blog->delete();
         }
@@ -91,10 +99,15 @@ class BlogController extends Controller
         $this->BlogValidation($request);
 
         $blog = Blog::find($id);
+        if($blog->cover_image) {
+            Storage::delete($blog->cover_image);
+        }
         if($blog) {
             $content = $this->StoreImage($request);
+            $coverImageUrl = CustomHelper::imageUpload($request->file('cover_image'),'back-end/img/blog_cover_image/', $blog->cover_image);
             Blog::where('id', $id)->update([
                 'title' => $request->title,
+                'cover_image' => $coverImageUrl,
                 'content' => $content,
                 'category_id' => $request->category_id,
             ]);

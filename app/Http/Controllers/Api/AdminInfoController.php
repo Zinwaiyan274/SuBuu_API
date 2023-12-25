@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\Reward;
+use App\Models\Wallet;
+use App\Models\Api\Quiz;
+use App\Models\UserGain;
 use App\Models\Point;
 use App\Models\Reward;
 use App\Models\Wallet;
 use App\Models\Api\Quiz;
 use App\Models\UserGain;
 use App\Models\Adnetwork;
+use App\Helper\CustomHelper;
 use App\Models\Api\Question;
 use App\Models\Api\UserQuiz;
 use Illuminate\Http\Request;
@@ -176,10 +181,15 @@ class AdminInfoController extends Controller
 
     public function withdrawRequest(Request $request): JsonResponse
     {
-        $data =  $request->only('real_name', 'township', 'division', 'profession', 'currency_convert_id', 'coins');
+        $data =  $request->only('real_name', 'township', 'division', 'profession', 'currency_convert_id', 'coins', 'qr_image', 'phone');
         $data['user_id'] = auth()->user()->id;
         $data['approve_status'] = 2;
         $data['status'] = 1;
+
+        // storing qr_image
+        $qrImageUrl = CustomHelper::imageUpload($request->file('qr_image'),'back-end/img/qr_image/');
+        $data['qr_image'] = $qrImageUrl;
+
         // random invoice number
         do {
             $number = random_int(100000, 999999);

@@ -21,6 +21,10 @@
                     <form action="{{route('update-blog', $info->id)}}" method="post" class="add-brand-form ajaxform_instant_reload" id="add-brand-form" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
+                            <div>
+                                <img class="col-lg-4" src="{{ asset($info->cover_image) }}" alt="Image" width="400px">
+                            </div>
+
                             <div class="col-lg-6 mt-2">
                                 <label>{{ __('Category Name') }}</label>
                                 <select name="category_id" class="form-control" required>
@@ -29,6 +33,11 @@
                                         <option @selected($category->id == $info->category_id) value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                            </div>
+
+                            <div class="col-lg-6 mt-2">
+                                <label>Cover Image</label>
+                                <input type="file" name="cover_image" class="form-control" id="cover-image" required>
                             </div>
 
                             <div class="col-lg-12 mt-2">

@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreignId('currency_convert_id')->constrained()->onDelete('cascade');
             $table->bigInteger('coins')->nullable();
             // $table->string('account')->nullable();
+            $table->string('qr_image')->nullable();
+            $table->string('phone');
             $table->double('amount')->default(0);
             $table->integer('approve_status')->default(1);
             $table->integer('status')->default(1);

@@ -91,7 +91,9 @@ class MusicController extends Controller
         } else {
             $audio_like = AudioLike::where('user_id', $user_id)->where('audio_id', $audio_id)->first();
 
-            $audio_like->delete();
+            if($audio_like) {
+                $audio_like->delete();
+            }
 
             return response()->json([
                 'status' => true,

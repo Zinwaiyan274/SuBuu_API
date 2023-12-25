@@ -28,7 +28,7 @@ class BlogCategoryController extends Controller
         $request->validate([
             'name' => 'required|max:100|min:2',
             'description' => 'nullable|max:1000',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:200/200|max:1024',
+            // 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:200/200|max:1024',
         ]);
 
         $imageUrl = CustomHelper::imageUpload($request->file('image'),'back-end/img/blog_category_image/');
