@@ -83,7 +83,7 @@ Route::prefix('v1')->name('api.')->group(function () {
         });
 
         Route::controller(Api\MovieController::class)->group(function() {
-            Route::get('/movies' , 'movieList')->name('movie-list');
+            Route::get('/movies/{page}' , 'movieList')->name('movie-list');
             Route::get('/movie/{id}' , 'movieDetail')->name('movie-detail');
         });
 

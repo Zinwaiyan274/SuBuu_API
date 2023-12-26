@@ -7,9 +7,13 @@ use App\Models\Movie;
 
 class MovieController extends Controller
 {
-    public function movieList()
+    public function movieList($page)
     {
-        $movies =  Movie::with('categories')->paginate(10);
+        $per_page = 5;
+        $skip = ($page - 1) * $per_page;
+
+        // $movies =  Movie::with('categories')->paginate(10);
+        $movies = Movie::skip($skip)->take($perPage)->with('categories')->get(); // Adjust the model
 
         return response()->json([
             'movies' => $movies
